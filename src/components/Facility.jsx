@@ -3,10 +3,10 @@ import Price from "./facility-components/Price";
 import Rating from "./facility-components/Rating";
 import MaintenanceScheduler from "./facility-components/MaintenanceScheduler";
 
-const Facility = ({ name, description }) => {
+const Facility = ({ name, description, imgSrc }) => {
   return (
     <div className="card">
-      <Image />
+      <Image imgSrc={imgSrc} imgAlt={name} />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{description}</p>
