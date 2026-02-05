@@ -2,6 +2,7 @@ import Image from "./Image";
 import Price from "./Price";
 import Rating from "./Rating";
 import Maintenance from "./Maintenance";
+import Demolish from "./Demolish";
 
 const Facility = ({
   id = -1,
@@ -44,6 +45,9 @@ const Facility = ({
         </li>
         <li className="list-group-item">
           <Maintenance scheduled={maintenance} date={maintenanceDate} />
+        </li>
+        <li className="row justify-content-end">
+          <Demolish/>
         </li>
       </ul>
     </div>
