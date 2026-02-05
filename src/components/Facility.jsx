@@ -3,7 +3,7 @@ import Price from "./Price";
 import Rating from "./Rating";
 import MaintenanceScheduler from "./MaintenanceScheduler";
 
-const Facility = ({ name, description, imgSrc, product, price, increasePrice, decreasePrice, priceChange, maxPrice, minPrice }) => {
+const Facility = ({ name, description, imgSrc, product, rating, maxRating, price, increasePrice, decreasePrice, priceChange, maxPrice, minPrice }) => {
   return (
     <div className="card">
       <Image imgSrc={imgSrc} imgAlt={name} />
@@ -13,7 +13,7 @@ const Facility = ({ name, description, imgSrc, product, price, increasePrice, de
       </div>
       <ul>
         <li className="list-group-item">
-          <Rating />
+          <Rating rating={rating} maxRating={maxRating}/>
         </li>
         <li className="list-group-item">
           <Price product={product} price={price} increasePrice={increasePrice} decreasePrice={decreasePrice} priceChange={priceChange} maxPrice={maxPrice} minPrice={minPrice}/>
