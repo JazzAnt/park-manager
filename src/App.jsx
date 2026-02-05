@@ -22,6 +22,8 @@ const fakeJson = [
     price: 10,
     minPrice: 5,
     maxPrice: 20,
+    maintenance: false,
+    maintenanceDate: "1970-01-01"
   },
   {
     id: 456,
@@ -33,6 +35,8 @@ const fakeJson = [
     price: 100,
     minPrice: 5,
     maxPrice: 200,
+    maintenance: true,
+    maintenanceDate: "2027-01-01"
   },
   {
     id: 789,
@@ -44,6 +48,8 @@ const fakeJson = [
     price: 1000,
     minPrice: 5,
     maxPrice: 2000,
+    maintenance: false,
+    maintenanceDate: "1970-01-01"
   },
   {
     id: 101,
@@ -55,6 +61,8 @@ const fakeJson = [
     price: 10000,
     minPrice: 5,
     maxPrice: 20000,
+    maintenance: true,
+    maintenanceDate: "2026-03-03"
   },
   {
     id: 202,
@@ -66,6 +74,8 @@ const fakeJson = [
     price: 10000,
     minPrice: 5,
     maxPrice: 20000,
+    maintenance: true,
+    maintenanceDate: "2026-05-01"
   },
 ];
 

@@ -24,6 +24,8 @@ const FacilityList = ({
           increasePrice={increasePrice}
           decreasePrice={decreasePrice}
           priceChange={priceChange}
+          maintenance={facility.maintenance}
+          maintenanceDate={facility.maintenanceDate}
         />
       ))}
     </div>
