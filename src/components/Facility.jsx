@@ -3,7 +3,23 @@ import Price from "./Price";
 import Rating from "./Rating";
 import Maintenance from "./Maintenance";
 
-const Facility = ({ name, description, imgSrc, product, rating, maxRating, price, increasePrice, decreasePrice, priceChange, maxPrice, minPrice, maintenance, maintenanceDate }) => {
+const Facility = ({
+  id = -1,
+  name = "",
+  description = "",
+  imgSrc = "react.svg",
+  product = "",
+  rating = 0,
+  price = 0,
+  minPrice = 0,
+  maxPrice = Number.MAX_SAFE_INTEGER,
+  maintenance = false,
+  maintenanceDate = "2026-1-1",
+  maxRating = 5,
+  increasePrice = (f) => f,
+  decreasePrice = (f) => f,
+  priceChange = 0,
+}) => {
   return (
     <div className="card">
       <Image imgSrc={imgSrc} imgAlt={name} />
@@ -13,13 +29,21 @@ const Facility = ({ name, description, imgSrc, product, rating, maxRating, price
       </div>
       <ul>
         <li className="list-group-item">
-          <Rating rating={rating} maxRating={maxRating}/>
+          <Rating rating={rating} maxRating={maxRating} />
         </li>
         <li className="list-group-item">
-          <Price product={product} price={price} increasePrice={increasePrice} decreasePrice={decreasePrice} priceChange={priceChange} maxPrice={maxPrice} minPrice={minPrice}/>
+          <Price
+            product={product}
+            price={price}
+            increasePrice={increasePrice}
+            decreasePrice={decreasePrice}
+            priceChange={priceChange}
+            maxPrice={maxPrice}
+            minPrice={minPrice}
+          />
         </li>
         <li className="list-group-item">
-          <Maintenance scheduled={maintenance} date={maintenanceDate}/>
+          <Maintenance scheduled={maintenance} date={maintenanceDate} />
         </li>
       </ul>
     </div>

@@ -1,33 +1,33 @@
 const Price = ({
-  product,
-  price,
-  increasePrice,
-  decreasePrice,
-  priceChange,
-  maxPrice,
-  minPrice,
+  product = "",
+  price = 0,
+  increasePrice = (f) => f,
+  decreasePrice = (f) => f,
+  priceChange = 0,
+  maxPrice = 0,
+  minPrice = Number.MAX_SAFE_INTEGER,
 }) => {
   return (
     <div className="row">
-      <p className="col-8">Price of {product}</p>
+      <p>Price of {product}</p>
       <button
-        className="col-1 btn btn-danger btn-sm"
+        className="btn btn-danger btn-sm"
         type="button"
         onClick={() => decreasePrice()}
         disabled={price <= minPrice}
         aria-disabled={price <= minPrice}
       >
-        -${priceChange}
+        -${Number(priceChange).toFixed(2)}
       </button>
-      <p className="col-2">${Number(price).toFixed(2)}</p>
+      <p>${Number(price).toFixed(2)}</p>
       <button
-        className="col-1 btn btn-success btn-sm"
+        className="btn btn-success btn-sm"
         type="button"
         onClick={() => increasePrice()}
         disabled={price >= maxPrice}
         aria-disabled={price >= maxPrice}
       >
-        +${priceChange}
+        +${Number(priceChange).toFixed(2)}
       </button>
     </div>
   );

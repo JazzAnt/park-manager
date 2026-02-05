@@ -23,7 +23,7 @@ const fakeJson = [
     minPrice: 5,
     maxPrice: 20,
     maintenance: false,
-    maintenanceDate: "1970-01-01"
+    maintenanceDate: "1970-01-01",
   },
   {
     id: 456,
@@ -36,7 +36,7 @@ const fakeJson = [
     minPrice: 5,
     maxPrice: 200,
     maintenance: true,
-    maintenanceDate: "2027-01-01"
+    maintenanceDate: "2027-01-01",
   },
   {
     id: 789,
@@ -49,7 +49,7 @@ const fakeJson = [
     minPrice: 5,
     maxPrice: 2000,
     maintenance: false,
-    maintenanceDate: "1970-01-01"
+    maintenanceDate: "1970-01-01",
   },
   {
     id: 101,
@@ -62,7 +62,7 @@ const fakeJson = [
     minPrice: 5,
     maxPrice: 20000,
     maintenance: true,
-    maintenanceDate: "2026-03-03"
+    maintenanceDate: "2026-03-03",
   },
   {
     id: 202,
@@ -75,18 +75,25 @@ const fakeJson = [
     minPrice: 5,
     maxPrice: 20000,
     maintenance: true,
-    maintenanceDate: "2026-05-01"
+    maintenanceDate: "2026-05-01",
   },
 ];
 
 function App() {
+  const MAX_RATING = 5;
+  const PRICE_CHANGE = 0.5;
+
   return (
     <>
       <Header
         title="Park Management Site"
         subtitle="Manage Your Facilities Here"
       />
-      <FacilityList facilities={fakeJson}/>
+      <FacilityList
+        facilities={fakeJson}
+        maxRating={MAX_RATING}
+        priceChange={PRICE_CHANGE}
+      />
       <Footer />
     </>
   );
