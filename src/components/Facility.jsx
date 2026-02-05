@@ -1,7 +1,7 @@
-import Image from "./facility-components/Image";
-import Price from "./facility-components/Price";
-import Rating from "./facility-components/Rating";
-import MaintenanceScheduler from "./facility-components/MaintenanceScheduler";
+import Image from "./Image";
+import Price from "./Price";
+import Rating from "./Rating";
+import MaintenanceScheduler from "./MaintenanceScheduler";
 
 const Facility = ({ name, description, imgSrc, product, price, increasePrice, decreasePrice, priceChange, maxPrice, minPrice }) => {
   return (
