@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 import Facility from "./components/Facility";
@@ -10,13 +8,12 @@ import FacilityList from "./components/FacilityList";
 
 let lorem =
   "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Earum nisi ullam voluptatem accusantium officiis illo ducimus minima dolorum eum, recusandae incidunt iusto natus iste ut soluta ab at? Corporis, similique.";
-
 const fakeJson = [
   {
     id: 123,
     name: "FacilityName1",
     description: lorem,
-    imgSrc: reactLogo,
+    imgSrc: "react.svg",
     product: "Product1",
     rating: 5,
     price: 10,
@@ -29,7 +26,7 @@ const fakeJson = [
     id: 456,
     name: "FacilityName2",
     description: lorem,
-    imgSrc: reactLogo,
+    imgSrc: "react.svg",
     product: "Product2",
     rating: 4,
     price: 100,
@@ -42,7 +39,7 @@ const fakeJson = [
     id: 789,
     name: "FacilityName3",
     description: lorem,
-    imgSrc: reactLogo,
+    imgSrc: "vite.svg",
     product: "Product3",
     rating: 3,
     price: 1000,
@@ -55,7 +52,7 @@ const fakeJson = [
     id: 101,
     name: "FacilityName4",
     description: lorem,
-    imgSrc: reactLogo,
+    imgSrc: "react.svg",
     product: "Product4",
     rating: 2,
     price: 10000,
@@ -68,7 +65,7 @@ const fakeJson = [
     id: 202,
     name: "FacilityName5",
     description: lorem,
-    imgSrc: reactLogo,
+    imgSrc: "vite.svg",
     product: "Product5",
     rating: 0,
     price: 10000,
@@ -103,4 +100,9 @@ export default App;
 
 /**
  * TODO LIST
+ * - Add functionality to all buttons on facility
+ * - Fix styling (add css and remember to import it here)
+ * - Move fake-json to a real json file
+ * - add form to add new facilities
+ * - (optional) add option for user to upload image
  */
