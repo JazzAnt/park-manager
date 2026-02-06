@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-const AddFacilityForm = () => {
+import { useState } from "react";
+const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [product, setProduct] = useState("");
@@ -7,8 +7,19 @@ const AddFacilityForm = () => {
   const [minPrice, setMinPrice] = useState(1);
   const [maxPrice, setMaxPrice] = useState(20);
 
+  const submit = (event) => {
+    event.preventDefault();
+    addNewFacility(name, description, product, price, minPrice, maxPrice);
+    setName("");
+    setDescription("");
+    setProduct("");
+    setPrice(5);
+    setMinPrice(1);
+    setMaxPrice(20);
+  };
+
   return (
-    <form onSubmit={(f) => f}>
+    <form onSubmit={submit}>
       <label>Name</label>
       <input
         type="text"
