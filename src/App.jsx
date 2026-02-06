@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { v4 } from "uuid";
+
 import "./App.css";
 
 import data from "./assets/services/data.json";
@@ -6,6 +8,7 @@ import data from "./assets/services/data.json";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FacilityList from "./components/FacilityList";
+import AddFacilityForm from "./components/AddFacilityForm";
 
 function getCurrentDate() {
   const now = new Date();
@@ -29,6 +32,37 @@ function App() {
       <Header
         title="Park Management Site"
         subtitle="Manage Your Facilities Here"
+      />
+      <AddFacilityForm
+        addNewFacility={(
+          name,
+          description,
+          imgSrc,
+          imgCredit,
+          product,
+          price,
+          minPrice,
+          maxPrice,
+        ) => {
+          const updated = [
+            ...facilities,
+            {
+              id: v4(),
+              name,
+              description,
+              imgSrc, //placeholder, replace with custom image adding if possible
+              imgCredit,
+              product,
+              rating: 0,
+              price,
+              minPrice,
+              maxPrice,
+              maintenance: false,
+              maintenanceDate: "1998-10-07",
+            },
+          ];
+          setFacilities(updated);
+        }}
       />
       <FacilityList
         facilities={facilities}
@@ -110,6 +144,5 @@ export default App;
 /**
  * TODO LIST
  * - Fix styling (add css and remember to import it here)
- * - add form to add new facilities
  * - (optional) add option for user to upload image
  */
