@@ -37,6 +37,8 @@ function App() {
         addNewFacility={(
           name,
           description,
+          imgSrc,
+          imgCredit,
           product,
           price,
           minPrice,
@@ -48,8 +50,8 @@ function App() {
               id: v4(),
               name,
               description,
-              imgSrc: "vite.svg", //placeholder, replace with custom image adding if possible
-              imgCredit: "",
+              imgSrc, //placeholder, replace with custom image adding if possible
+              imgCredit,
               product,
               rating: 0,
               price,

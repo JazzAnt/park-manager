@@ -2,24 +2,65 @@ import { useState } from "react";
 const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState(undefined);
   const [product, setProduct] = useState("");
   const [price, setPrice] = useState(5);
   const [minPrice, setMinPrice] = useState(1);
   const [maxPrice, setMaxPrice] = useState(20);
 
-  const submit = (event) => {
-    event.preventDefault();
-    addNewFacility(name, description, product, price, minPrice, maxPrice);
-    setName("");
-    setDescription("");
-    setProduct("");
-    setPrice(5);
-    setMinPrice(1);
-    setMaxPrice(20);
+  const saveUploadedImage = () => {
+    // Image is optional so if user doesn't upload anything then it's fine
+    if (!image) return true;
+    // Form already has these type restriction but users can override it so add another check here
+    if (
+      image.type !== "image/jpeg" &&
+      image.type !== "image/png" &&
+      image.type !== "image/svg+xml"
+    ) {
+      alert(
+        "ERROR: Selected file type is not supported. File must be a jpg/jpeg, png or svg file.",
+      );
+      return false;
+    }
+    // Max size 8MB
+    if (image.size > 8000000) {
+      alert("ERROR: Image cannot exceed 8MB.");
+      return false;
+    }
+    // This alert will be replaced with an actual way to save the image to the server
+    alert(
+      `Image upload is not implemented yet, but if you see this message then your file met all the validation criteria and would've been uploaded. For now the Vite logo is used as a placeholder image for all newly added facilities.`,
+    );
+    return true;
   };
 
+  const submit = () => {
+    if (saveUploadedImage()) {
+      addNewFacility(
+        name,
+        description,
+        "vite.svg",
+        "",
+        product,
+        price,
+        minPrice,
+        maxPrice,
+      );
+      setName("");
+      setDescription("");
+      setImage(undefined)
+      setProduct("");
+      setPrice(5);
+      setMinPrice(1);
+      setMaxPrice(20);
+    }
+  };
+
+  // Button onClick is used to handle submit rather than onSubmit
+  // because onSubmit resets the input values even if the input
+  // didn't pass the validateImage() check
   return (
-    <form onSubmit={submit}>
+    <form>
       <label>Name</label>
       <input
         type="text"
@@ -36,8 +77,12 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
         placeholder="Description of Facility"
         onChange={(event) => setDescription(event.target.value)}
       />
-      <label>Image</label>
-      <input type="file" />
+      <label>Image (max 8MB)</label>
+      <input
+        type="file"
+        accept="image/jpeg, image/png, image/svg+xml"
+        onChange={(event) => setImage(event.target.files[0])}
+      />
       <label>Product</label>
       <input
         type="text"
@@ -77,7 +122,9 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
         max={Number.MAX_SAFE_INTEGER}
         onChange={(event) => setMaxPrice(event.target.value)}
       />
-      <button>Add Facility</button>
+      <button type="button" onClick={submit}>
+        Add Facility
+      </button>
     </form>
   );
 };
