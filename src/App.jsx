@@ -60,6 +60,10 @@ function App() {
           );
           setFacilities(updated);
         }}
+        onDemolish={(id) => {
+          const updated = facilities.filter((facility) => facility.id !== id);
+          setFacilities(updated);
+        }}
       />
       <Footer />
     </>
@@ -71,7 +75,6 @@ export default App;
 /**
  * TODO LIST
  * - Add functionality to all buttons on facility:
- * -- Demolish Button
  * -- Maintenance Scheduler
  * - Fix styling (add css and remember to import it here)
  * - add form to add new facilities

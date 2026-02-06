@@ -21,6 +21,7 @@ const Facility = ({
   increasePrice = (f) => f,
   decreasePrice = (f) => f,
   priceChange = 0,
+  onDemolish = (f) => f,
 }) => {
   return (
     <div className="card">
@@ -56,7 +57,7 @@ const Facility = ({
           <Maintenance scheduled={maintenance} date={maintenanceDate} />
         </li>
         <li className="row justify-content-end">
-          <Demolish />
+          <Demolish onDemolish={() => onDemolish(id)} />
         </li>
       </ul>
     </div>

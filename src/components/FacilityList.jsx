@@ -6,6 +6,7 @@ const FacilityList = ({
   increasePrice = (f) => f,
   decreasePrice = (f) => f,
   priceChange = 0,
+  onDemolish = (f) => f,
 }) =>
   facilities.length === 0 ? (
     <h2>No Facility in the Database</h2>
@@ -22,6 +23,7 @@ const FacilityList = ({
             increasePrice={increasePrice}
             decreasePrice={decreasePrice}
             priceChange={priceChange}
+            onDemolish={onDemolish}
           />
         ))}
       </div>
