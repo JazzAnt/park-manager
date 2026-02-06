@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { v4 } from "uuid";
+
 import "./App.css";
 
 import data from "./assets/services/data.json";
@@ -31,7 +33,35 @@ function App() {
         title="Park Management Site"
         subtitle="Manage Your Facilities Here"
       />
-      <AddFacilityForm/>
+      <AddFacilityForm
+        addNewFacility={(
+          name,
+          description,
+          product,
+          price,
+          minPrice,
+          maxPrice,
+        ) => {
+          const updated = [
+            ...facilities,
+            {
+              id: v4(),
+              name,
+              description,
+              imgSrc: "vite.svg", //placeholder, replace with custom image adding if possible
+              imgCredit: "",
+              product,
+              rating: 0,
+              price,
+              minPrice,
+              maxPrice,
+              maintenance: false,
+              maintenanceDate: "1998-10-07",
+            },
+          ];
+          setFacilities(updated);
+        }}
+      />
       <FacilityList
         facilities={facilities}
         maxRating={MAX_RATING}
@@ -112,6 +142,5 @@ export default App;
 /**
  * TODO LIST
  * - Fix styling (add css and remember to import it here)
- * - add form to add new facilities
  * - (optional) add option for user to upload image
  */
