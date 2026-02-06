@@ -21,6 +21,8 @@ const Facility = ({
   increasePrice = (f) => f,
   decreasePrice = (f) => f,
   priceChange = 0,
+  onMaintenanceChange = (f) => f,
+  onDateChange = (f) => f,
   onDemolish = (f) => f,
 }) => {
   return (
@@ -54,7 +56,12 @@ const Facility = ({
           />
         </li>
         <li className="list-group-item">
-          <Maintenance scheduled={maintenance} date={maintenanceDate} />
+          <Maintenance
+            scheduled={maintenance}
+            date={maintenanceDate}
+            onScheduledChange={() => onMaintenanceChange(id)}
+            onDateChange={(date) => onDateChange(id, date)}
+          />
         </li>
         <li className="row justify-content-end">
           <Demolish onDemolish={() => onDemolish(id)} />

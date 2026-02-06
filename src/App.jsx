@@ -7,6 +7,18 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FacilityList from "./components/FacilityList";
 
+function getCurrentDate() {
+  const now = new Date();
+  //String().padStart(2,"0") makes sure that these are double digits
+  //even if it's a single digit day/month
+  //getMonth and getDay returns the month and day starting at index 0
+  //(e.g. Jan = 0, Feb = 1, Mar = 2, etc) which is why they need + 1
+  const year = String(now.getFullYear()).padStart(4, "0");
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDay() + 1).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 function App() {
   const [facilities, setFacilities] = useState(data);
   const MAX_RATING = 5;
@@ -60,6 +72,29 @@ function App() {
           );
           setFacilities(updated);
         }}
+        onMaintenanceChange={(id) => {
+          const updated = facilities.map((facility) =>
+            facility.id === id
+              ? {
+                  ...facility,
+                  maintenance: !facility.maintenance, // This is a checkbox so it just flips the existing bool
+                  maintenanceDate: getCurrentDate(),
+                  // Date is reset so that if checkbox goes from false to true, date is set to
+                  // current date as the default date. If it goes from true to false also set
+                  // the date since it'll be hidden anyways so it's fine.
+                }
+              : facility,
+          );
+          setFacilities(updated);
+        }}
+        onDateChange={(id, date) => {
+          const updated = facilities.map((facility) =>
+            facility.id === id
+              ? { ...facility, maintenanceDate: date }
+              : facility,
+          );
+          setFacilities(updated);
+        }}
         onDemolish={(id) => {
           const updated = facilities.filter((facility) => facility.id !== id);
           setFacilities(updated);
@@ -74,8 +109,6 @@ export default App;
 
 /**
  * TODO LIST
- * - Add functionality to all buttons on facility:
- * -- Maintenance Scheduler
  * - Fix styling (add css and remember to import it here)
  * - add form to add new facilities
  * - (optional) add option for user to upload image
