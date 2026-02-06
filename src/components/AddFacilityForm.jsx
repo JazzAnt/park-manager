@@ -42,6 +42,8 @@ const AddFacilityForm = () => {
         value={price}
         required
         aria-required
+        min={minPrice}
+        max={maxPrice}
         onChange={(event) => setPrice(event.target.value)}
       />
       <label>Minimum Price</label>
@@ -50,6 +52,8 @@ const AddFacilityForm = () => {
         value={minPrice}
         required
         aria-required
+        min={0}
+        max={price}
         onChange={(event) => setMinPrice(event.target.value)}
       />
       <label>Maximum Price</label>
@@ -58,6 +62,8 @@ const AddFacilityForm = () => {
         value={maxPrice}
         required
         aria-required
+        min={price}
+        max={Number.MAX_SAFE_INTEGER}
         onChange={(event) => setMaxPrice(event.target.value)}
       />
       <button>Add Facility</button>
