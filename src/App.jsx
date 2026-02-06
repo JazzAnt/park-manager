@@ -21,11 +21,17 @@ function App() {
       <FacilityList
         facilities={facilities}
         maxRating={MAX_RATING}
+        onRate={(id, rating) => {
+          const updated = facilities.map((facility) =>
+            facility.id === id ? { ...facility, rating } : facility,
+          );
+          setFacilities(updated);
+        }}
         priceChange={PRICE_CHANGE}
         //Could just use the const PRICE_CHANGE as increaseBy/decreaseBy but made it an argument
         //just in case I change my mind and want to give each facility a different increment
         increasePrice={(id, price, increaseBy, maxPrice) => {
-          const updated = facilities.map((facility) => 
+          const updated = facilities.map((facility) =>
             facility.id === id
               ? {
                   ...facility,
@@ -35,12 +41,12 @@ function App() {
                       ? maxPrice
                       : price + increaseBy,
                 }
-              : facility
+              : facility,
           );
           setFacilities(updated);
         }}
         decreasePrice={(id, price, decreaseBy, minPrice) => {
-          const updated = facilities.map((facility) => 
+          const updated = facilities.map((facility) =>
             facility.id === id
               ? {
                   ...facility,
@@ -50,7 +56,7 @@ function App() {
                       ? minPrice
                       : price - decreaseBy,
                 }
-              : facility
+              : facility,
           );
           setFacilities(updated);
         }}
@@ -64,8 +70,7 @@ export default App;
 
 /**
  * TODO LIST
- * - Add functionality to all buttons on facility: 
- * -- Rating System
+ * - Add functionality to all buttons on facility:
  * -- Demolish Button
  * -- Maintenance Scheduler
  * - Fix styling (add css and remember to import it here)

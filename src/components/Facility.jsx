@@ -17,6 +17,7 @@ const Facility = ({
   maintenance = false,
   maintenanceDate = "2026-1-1",
   maxRating = 5,
+  onRate = (f) => f,
   increasePrice = (f) => f,
   decreasePrice = (f) => f,
   priceChange = 0,
@@ -30,14 +31,22 @@ const Facility = ({
       </div>
       <ul>
         <li className="list-group-item">
-          <Rating rating={rating} maxRating={maxRating} />
+          <Rating
+            rating={rating}
+            maxRating={maxRating}
+            onRate={(rating) => onRate(id, rating)}
+          />
         </li>
         <li className="list-group-item">
           <Price
             product={product}
             price={price}
-            increasePrice={() => increasePrice(id, price, priceChange, maxPrice)}
-            decreasePrice={() => decreasePrice(id, price, priceChange, minPrice)}
+            increasePrice={() =>
+              increasePrice(id, price, priceChange, maxPrice)
+            }
+            decreasePrice={() =>
+              decreasePrice(id, price, priceChange, minPrice)
+            }
             priceChange={priceChange}
             maxPrice={maxPrice}
             minPrice={minPrice}
@@ -47,7 +56,7 @@ const Facility = ({
           <Maintenance scheduled={maintenance} date={maintenanceDate} />
         </li>
         <li className="row justify-content-end">
-          <Demolish/>
+          <Demolish />
         </li>
       </ul>
     </div>

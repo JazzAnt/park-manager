@@ -2,6 +2,7 @@ import Facility from "./Facility";
 const FacilityList = ({
   facilities = [],
   maxRating = 5,
+  onRate = (f) => f,
   increasePrice = (f) => f,
   decreasePrice = (f) => f,
   priceChange = 0,
@@ -17,6 +18,7 @@ const FacilityList = ({
             key={facility.id}
             {...facility}
             maxRating={maxRating}
+            onRate={onRate}
             increasePrice={increasePrice}
             decreasePrice={decreasePrice}
             priceChange={priceChange}
