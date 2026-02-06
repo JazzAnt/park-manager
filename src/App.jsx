@@ -6,6 +6,7 @@ import data from "./assets/services/data.json";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FacilityList from "./components/FacilityList";
+import AddFacilityForm from "./components/AddFacilityForm";
 
 function getCurrentDate() {
   const now = new Date();
@@ -30,6 +31,7 @@ function App() {
         title="Park Management Site"
         subtitle="Manage Your Facilities Here"
       />
+      <AddFacilityForm/>
       <FacilityList
         facilities={facilities}
         maxRating={MAX_RATING}
