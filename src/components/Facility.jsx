@@ -26,47 +26,43 @@ const Facility = ({
   onDemolish = (f) => f,
 }) => {
   return (
-    <div className="card">
-      <Image imgSrc={imgSrc} imgAlt={name} />
+    <div className="card justify-content-center facility">
+      <div className="imgContainer">
+        <Image imgSrc={imgSrc} imgAlt={name} />
+      </div>
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
-        <p className="card-text">{description}</p>
+        <p className="card-subtitle">{description}</p>
       </div>
-      <ul>
-        <li className="list-group-item">
-          <Rating
-            rating={rating}
-            maxRating={maxRating}
-            onRate={(rating) => onRate(id, rating)}
-          />
-        </li>
-        <li className="list-group-item">
-          <Price
-            product={product}
-            price={price}
-            increasePrice={() =>
-              increasePrice(id, price, priceChange, maxPrice)
-            }
-            decreasePrice={() =>
-              decreasePrice(id, price, priceChange, minPrice)
-            }
-            priceChange={priceChange}
-            maxPrice={maxPrice}
-            minPrice={minPrice}
-          />
-        </li>
-        <li className="list-group-item">
-          <Maintenance
-            scheduled={maintenance}
-            date={maintenanceDate}
-            onScheduledChange={() => onMaintenanceChange(id)}
-            onDateChange={(date) => onDateChange(id, date)}
-          />
-        </li>
-        <li className="row justify-content-end">
-          <Demolish onDemolish={() => onDemolish(id)} />
-        </li>
-      </ul>
+      <div>
+        <Rating
+          rating={rating}
+          maxRating={maxRating}
+          onRate={(rating) => onRate(id, rating)}
+        />
+      </div>
+      <div>
+        <Price
+          product={product}
+          price={price}
+          increasePrice={() => increasePrice(id, price, priceChange, maxPrice)}
+          decreasePrice={() => decreasePrice(id, price, priceChange, minPrice)}
+          priceChange={priceChange}
+          maxPrice={maxPrice}
+          minPrice={minPrice}
+        />
+      </div>
+      <div>
+        <Maintenance
+          scheduled={maintenance}
+          date={maintenanceDate}
+          onScheduledChange={() => onMaintenanceChange(id)}
+          onDateChange={(date) => onDateChange(id, date)}
+        />
+      </div>
+      <div>
+        <Demolish onDemolish={() => onDemolish(id)} />
+      </div>
     </div>
   );
 };

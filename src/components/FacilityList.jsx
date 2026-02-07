@@ -17,7 +17,7 @@ const FacilityList = ({
   ) : (
     <div className="facilityList">
       <h2>Showing {facilities.length} Facilities</h2>
-      <div className="row">
+      <div className="facilityContainer">
         {facilities.map((facility) => (
           <Facility
             key={facility.id}

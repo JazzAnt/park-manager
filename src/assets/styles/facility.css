@@ -1,20 +1,78 @@
 .facilityList {
-    width: 95%;
-    margin-top: 2.8em;
-    margin-left: 2.5%;
-    padding: 2.4em;
-    border: 0.2em cyan outset;
-    border-radius: 0.4em;
-    background-color: lightcyan;
+  margin-top: 2.8em;
+  padding: 2vw;
+  border: 0.2em cyan outset;
+  border-radius: 0.4em;
+  background-color: lightcyan;
 }
 
 .facilityList > h2 {
-    margin-left: 24vw;
-    padding: 0 1em;
-    width: fit-content;
-    border: 0.2em cyan outset;
-    border-radius: 0.36em;
-    background-color: cyan;
-    font-weight: bold;
-    margin-top: -2em;
+  margin-left: 5%;
+  padding: 0 1em;
+  width: fit-content;
+  border: 0.2em cyan outset;
+  border-radius: 0.36em;
+  background-color: cyan;
+  font-weight: bold;
+  margin-top: -2em;
+}
+
+.facilityContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.facility {
+  flex: 1 1 85%;
+  margin: 1% 1%;
+  display: flex;
+  flex-flow: row wrap;
+  box-shadow: 0.36em 0.36em black;
+}
+
+.facility > .imgContainer {
+  height: 128px;
+}
+
+.facility > .imgContainer img {
+  border: 0.2em black inset;
+  width: 192px;
+}
+
+.facility > .titleContainer {
+  border: 1px red solid;
+}
+
+.demolishBtn {
+  box-shadow: 0.16em 0.16em black;
+}
+
+/**=================================================== 
+   MOBILE VIEW : 0px to 600px
+   ===================================================*/
+@media only screen and (max-width: 600px) {
+}
+
+/**===================================================
+   TABLET POTRAIT VIEW : 601px and greater
+   ===================================================*/
+@media only screen and (min-width: 601px) {
+  .facility {
+    flex: 1 1 40%;
+  }
+  .facilityList > h2 {
+    margin-left: 20%;
+  }
+}
+
+/**===================================================
+   TABLET LANDSCAPE & DESKTOP VIEW : 901px and greater
+   ===================================================*/
+@media only screen and (min-width: 901px) {
+  .facility {
+    flex: 1 1 30%;
+  }
+  .facilityList > h2 {
+    margin-left: 24%;
+  }
 }
