@@ -80,8 +80,6 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
         </div>
         <div className="form-row">
           <label>Description</label>
-        </div>
-        <div className="form-row">
           <textarea
             value={description}
             placeholder="Description of Facility"
@@ -147,16 +145,17 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
           />
         </div>
       </fieldset>
-      <div className="formButtons">
+      <div className="buttons">
         <button
           type="button"
+          className="btn btn-secondary"
           onClick={() => {
             if (confirm("Reset inputted values to default?")) reset();
           }}
         >
           Reset
         </button>
-        <button type="button" onClick={submit}>
+        <button type="button" className="btn btn-primary" onClick={submit}>
           Add Facility
         </button>
       </div>
