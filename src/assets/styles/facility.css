@@ -35,6 +35,10 @@
   object-fit: cover;
 }
 
+.facility .card-title {
+    font-weight: bold;
+}
+
 .facility-row {
     border-top: 0.1em black dotted;
     padding-top: 0.1em;
