@@ -38,6 +38,7 @@ const Facility = ({
           maxRating={maxRating}
           onRate={(rating) => onRate(id, rating)}
         />
+        <p className="card-text">{rating}/{maxRating} Rating</p>
       </div>
       <div className="facility-row">
         <Price
