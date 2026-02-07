@@ -34,6 +34,16 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
     return true;
   };
 
+  const reset = () => {
+    setName("");
+    setDescription("");
+    setImage(undefined);
+    setProduct("");
+    setPrice(5);
+    setMinPrice(1);
+    setMaxPrice(20);
+  };
+
   const submit = () => {
     if (saveUploadedImage()) {
       addNewFacility(
@@ -46,13 +56,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
         minPrice,
         maxPrice,
       );
-      setName("");
-      setDescription("");
-      setImage(undefined);
-      setProduct("");
-      setPrice(5);
-      setMinPrice(1);
-      setMaxPrice(20);
+      reset();
     }
   };
 
@@ -78,8 +82,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
           <label>Description</label>
         </div>
         <div className="form-row">
-          <input
-            type="text"
+          <textarea
             value={description}
             placeholder="Description of Facility"
             onChange={(event) => setDescription(event.target.value)}
@@ -145,6 +148,14 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
         </div>
       </fieldset>
       <div className="formButtons">
+        <button
+          type="button"
+          onClick={() => {
+            if (confirm("Reset inputted values to default?")) reset();
+          }}
+        >
+          Reset
+        </button>
         <button type="button" onClick={submit}>
           Add Facility
         </button>
