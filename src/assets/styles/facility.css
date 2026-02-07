@@ -23,20 +23,16 @@
 }
 
 .facility {
-  flex: 1 1 85%;
+  padding: 0 0 0.5em 0;
+  flex: 1 1 100%;
   margin: 1% 1%;
-  display: flex;
-  flex-flow: row wrap;
   box-shadow: 0.36em 0.36em black;
 }
 
-.facility > .imgContainer {
+.facility > .card-img-top {
+  width: 100%;
   height: 128px;
-}
-
-.facility > .imgContainer img {
-  border: 0.2em black inset;
-  width: 192px;
+  object-fit: cover;
 }
 
 .facility > .titleContainer {

@@ -26,10 +26,8 @@ const Facility = ({
   onDemolish = (f) => f,
 }) => {
   return (
-    <div className="card justify-content-center facility">
-      <div className="imgContainer">
-        <Image imgSrc={imgSrc} imgAlt={name} />
-      </div>
+    <div className="card facility">
+      <Image imgSrc={imgSrc} imgAlt={name} />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
         <p className="card-subtitle">{description}</p>
