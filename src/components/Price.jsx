@@ -8,8 +8,8 @@ const Price = ({
   minPrice = Number.MAX_SAFE_INTEGER,
 }) => {
   return (
-    <div className="row">
-      <p>Price of {product}</p>
+    <div className="price-container">
+      <label className="product">Price of <span>{product.toUpperCase()}</span></label>
       <button
         className="btn btn-danger btn-sm"
         type="button"
@@ -19,7 +19,7 @@ const Price = ({
       >
         -${Number(priceChange).toFixed(2)}
       </button>
-      <p>${Number(price).toFixed(2)}</p>
+      <label className="price">${Number(price).toFixed(2)}</label>
       <button
         className="btn btn-success btn-sm"
         type="button"

@@ -11,11 +11,13 @@ const FacilityList = ({
   onDemolish = (f) => f,
 }) =>
   facilities.length === 0 ? (
-    <h2>No Facility in the Database</h2>
+    <div className="facilityList">
+      <h2>No Facility in the Database</h2>
+    </div>
   ) : (
-    <>
+    <div className="facilityList">
       <h2>Showing {facilities.length} Facilities</h2>
-      <div className="row">
+      <div className="facilityContainer">
         {facilities.map((facility) => (
           <Facility
             key={facility.id}
@@ -31,7 +33,7 @@ const FacilityList = ({
           />
         ))}
       </div>
-    </>
+    </div>
   );
 
 export default FacilityList;

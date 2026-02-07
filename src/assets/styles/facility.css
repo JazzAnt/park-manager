@@ -1,0 +1,114 @@
+.facilityList {
+  margin-top: 2.8em;
+  padding: 2vw;
+  border: 0.2em cyan outset;
+  border-radius: 0.4em;
+  background-color: lightcyan;
+}
+
+.facilityList > h2 {
+  margin-left: 5%;
+  padding: 0 1em;
+  width: fit-content;
+  border: 0.2em cyan outset;
+  border-radius: 0.36em;
+  background-color: cyan;
+  font-weight: bold;
+  margin-top: -2em;
+}
+
+.facilityContainer {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.facility {
+  padding: 0 0 0.5em 0;
+  flex: 1 1 100%;
+  margin: 1% 1%;
+  box-shadow: 0.36em 0.36em black;
+}
+
+.facility > .card-img-top {
+  width: 100%;
+  height: 128px;
+  object-fit: cover;
+}
+
+.facility .card-title {
+    font-weight: bold;
+}
+
+.facility-row {
+    border-top: 0.1em black dotted;
+    padding-top: 0.1em;
+    padding-bottom: 0.1em;
+}
+
+.price-container {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5em;
+}
+
+.price-container label.product {
+    flex: 1 1 33%;
+}
+
+.price-container label.product > span {
+    font-weight: bold;
+    text-shadow: 1px 1px gray;
+}
+
+.price-container button {
+    width: fit-content;
+    font-size: 0.9em;
+}
+
+.price-container label.price {
+    width: fit-content;
+    font-size: 0.95em;
+    padding: 0 1em;
+
+}
+
+
+.maintenance-check label {
+    padding-right: 0.4em;
+}
+
+.demolishBtn {
+  box-shadow: 0.16em 0.16em black;
+}
+
+/**=================================================== 
+   MOBILE VIEW : 0px to 600px
+   ===================================================*/
+@media only screen and (max-width: 600px) {
+}
+
+/**===================================================
+   TABLET POTRAIT VIEW : 601px and greater
+   ===================================================*/
+@media only screen and (min-width: 601px) {
+  .facility {
+    flex: 1 1 48%;
+    max-width: 48%;
+  }
+  .facilityList > h2 {
+    margin-left: 20%;
+  }
+}
+
+/**===================================================
+   TABLET LANDSCAPE & DESKTOP VIEW : 901px and greater
+   ===================================================*/
+@media only screen and (min-width: 901px) {
+  .facility {
+    flex: 1 1 31%;
+    max-width: 31%;
+  }
+  .facilityList > h2 {
+    margin-left: 24%;
+  }
+}
