@@ -41,6 +41,34 @@
     padding-bottom: 0.1em;
 }
 
+.price-container {
+    display: flex;
+    align-items: center;
+    padding: 0 0.5em;
+}
+
+.price-container label.product {
+    flex: 1 1 33%;
+}
+
+.price-container label.product > span {
+    font-weight: bold;
+    text-shadow: 1px 1px gray;
+}
+
+.price-container button {
+    width: fit-content;
+    font-size: 0.9em;
+}
+
+.price-container label.price {
+    width: fit-content;
+    font-size: 0.95em;
+    padding: 0 1em;
+
+}
+
+
 .maintenance-check label {
     padding-right: 0.4em;
 }
