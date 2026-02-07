@@ -4,7 +4,7 @@ const Maintenance = ({
   date = "1970-01-01",
   onDateChange = (f) => f,
 }) => (
-  <div>
+  <div className="maintenance-check">
     <div>
       <label>Schedule Maintenance?</label>
       <input
@@ -19,6 +19,8 @@ const Maintenance = ({
         type="date"
         value={date}
         onChange={(event) => onDateChange(event.target.value)}
+        disabled={!scheduled}
+        aria-disabled={!scheduled}
       />
     </div>
   </div>

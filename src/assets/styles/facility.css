@@ -41,6 +41,10 @@
     padding-bottom: 0.1em;
 }
 
+.maintenance-check label {
+    padding-right: 0.4em;
+}
+
 .demolishBtn {
   box-shadow: 0.16em 0.16em black;
 }
