@@ -1,0 +1,84 @@
+form.facilityForm {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 1.2em;
+}
+
+form.facilityForm > fieldset {
+  flex: 1 1 80vw;
+  margin: 0.4em 0;
+  border-radius: 0.64em;
+  background-color: whitesmoke;
+  border: 0.24em grey outset;
+}
+
+form.facilityForm > fieldset > legend {
+  background-color: lightblue;
+  color: black;
+  font-size: 1.11em;
+  font-weight: bold;
+  border-radius: 0.64em;
+  border: 0.16em darkgray outset;
+  width: fit-content;
+  margin-left: 1.6em;
+  padding: 0 0.5em;
+  margin-top: -0.8em;
+}
+
+form.facilityForm > fieldset > div.form-row {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: 0.2em;
+}
+
+form.facilityForm > fieldset > div.form-row > label {
+  flex: 1 1 8vw;
+  padding-right: 0.1em;
+  font-size: 0.95em;
+}
+
+form.facilityForm > fieldset > div.form-row > input,
+textarea {
+  flex: 2 4 16vw;
+  padding-left: 0.24em;
+  margin-right: 0.32em;
+}
+
+form.facilityForm > fieldset > div.form-row > textarea {
+  resize: vertical;
+  margin-right: 0.32em;
+}
+
+form.facilityForm > div.buttons {
+  margin-top: 0.25em;
+  text-align: end;
+  width: 100%;
+}
+
+form.facilityForm > div.buttons > button {
+  font-size: 1.16em;
+  margin: 0 0.24em;
+  box-shadow: 0.16em 0.16em black;
+}
+
+/**=================================================== 
+   MOBILE VIEW : 0px to 600px
+   ===================================================*/
+@media only screen and (max-width: 600px) {
+}
+
+/**===================================================
+   TABLET POTRAIT VIEW : 601px and greater
+   ===================================================*/
+@media only screen and (min-width: 601px) {
+}
+
+/**===================================================
+   TABLET LANDSCAPE & DESKTOP VIEW : 901px and greater
+   ===================================================*/
+@media only screen and (min-width: 901px) {
+  form.facilityForm > fieldset {
+    flex: 1 1 44%;
+    margin: 0 0.4em;
+  }
+}
