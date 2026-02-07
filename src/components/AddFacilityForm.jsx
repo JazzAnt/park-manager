@@ -7,6 +7,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
   const [price, setPrice] = useState(5);
   const [minPrice, setMinPrice] = useState(1);
   const [maxPrice, setMaxPrice] = useState(20);
+  const [fileKey, setFileKey] = useState(0);
 
   const saveUploadedImage = () => {
     // Image is optional so if user doesn't upload anything then it's fine
@@ -38,6 +39,9 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
     setName("");
     setDescription("");
     setImage(undefined);
+    // Changing the file input key is done so that React is forced to reload the element
+    // which is used to remove the visual indication that a file has been uploaded.
+    setFileKey(fileKey ? 0 : 1); 
     setProduct("");
     setPrice(5);
     setMinPrice(1);
@@ -62,7 +66,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
   };
 
   return (
-    <form className="facilityForm" onSubmit={(event)=> submit(event)}>
+    <form className="facilityForm" onSubmit={(event) => submit(event)}>
       <fieldset>
         <legend>Facility Data</legend>
         <div className="form-row">
@@ -90,6 +94,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
             type="file"
             accept="image/jpeg, image/png, image/svg+xml"
             onChange={(event) => setImage(event.target.files[0])}
+            key={fileKey}
           />
         </div>
       </fieldset>
