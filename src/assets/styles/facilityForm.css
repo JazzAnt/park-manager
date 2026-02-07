@@ -41,10 +41,12 @@ form.facilityForm > fieldset > div.form-row > input,
 textarea {
   flex: 2 4 16vw;
   padding-left: 0.24em;
+  margin-right: 0.32em;
 }
 
 form.facilityForm > fieldset > div.form-row > textarea {
   resize: vertical;
+  margin-right: 0.32em;
 }
 
 form.facilityForm > div.buttons {
