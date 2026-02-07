@@ -32,14 +32,14 @@ const Facility = ({
         <h5 className="card-title">{name}</h5>
         <p className="card-subtitle">{description}</p>
       </div>
-      <div>
+      <div className="facility-row">
         <Rating
           rating={rating}
           maxRating={maxRating}
           onRate={(rating) => onRate(id, rating)}
         />
       </div>
-      <div>
+      <div className="facility-row">
         <Price
           product={product}
           price={price}
@@ -50,7 +50,7 @@ const Facility = ({
           minPrice={minPrice}
         />
       </div>
-      <div>
+      <div className="facility-row">
         <Maintenance
           scheduled={maintenance}
           date={maintenanceDate}
@@ -58,7 +58,7 @@ const Facility = ({
           onDateChange={(date) => onDateChange(id, date)}
         />
       </div>
-      <div>
+      <div className="card-footer">
         <Demolish onDemolish={() => onDemolish(id)} />
       </div>
     </div>
