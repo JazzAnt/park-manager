@@ -1,0 +1,20 @@
+.facilityList {
+    width: 95%;
+    margin-top: 2.8em;
+    margin-left: 2.5%;
+    padding: 2.4em;
+    border: 0.2em cyan outset;
+    border-radius: 0.4em;
+    background-color: lightcyan;
+}
+
+.facilityList > h2 {
+    margin-left: 24vw;
+    padding: 0 1em;
+    width: fit-content;
+    border: 0.2em cyan outset;
+    border-radius: 0.36em;
+    background-color: cyan;
+    font-weight: bold;
+    margin-top: -2em;
+}

@@ -4,6 +4,7 @@ import { v4 } from "uuid";
 import "./App.css";
 import "./assets/styles/reset.css";
 import "./assets/styles/facilityForm.css"
+import "./assets/styles/facility.css"
 
 import data from "./assets/services/data.json";
 
