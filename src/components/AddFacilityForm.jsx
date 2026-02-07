@@ -44,7 +44,8 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
     setMaxPrice(20);
   };
 
-  const submit = () => {
+  const submit = (event) => {
+    event.preventDefault();
     if (saveUploadedImage()) {
       addNewFacility(
         name,
@@ -60,11 +61,8 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
     }
   };
 
-  // Button onClick is used to handle submit rather than onSubmit
-  // because onSubmit resets the input values even if the input
-  // didn't pass the validateImage() check
   return (
-    <form className="facilityForm">
+    <form className="facilityForm" onSubmit={(event)=> submit(event)}>
       <fieldset>
         <legend>Facility Data</legend>
         <div className="form-row">
@@ -155,7 +153,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
         >
           Reset
         </button>
-        <button type="button" className="btn btn-primary" onClick={submit}>
+        <button type="submit" className="btn btn-primary">
           Add Facility
         </button>
       </div>
