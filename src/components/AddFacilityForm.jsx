@@ -48,7 +48,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
       );
       setName("");
       setDescription("");
-      setImage(undefined)
+      setImage(undefined);
       setProduct("");
       setPrice(5);
       setMinPrice(1);
@@ -60,71 +60,95 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
   // because onSubmit resets the input values even if the input
   // didn't pass the validateImage() check
   return (
-    <form>
-      <label>Name</label>
-      <input
-        type="text"
-        value={name}
-        placeholder="Name of Facility"
-        required
-        aria-required
-        onChange={(event) => setName(event.target.value)}
-      />
-      <label>Description</label>
-      <input
-        type="text"
-        value={description}
-        placeholder="Description of Facility"
-        onChange={(event) => setDescription(event.target.value)}
-      />
-      <label>Image (max 8MB)</label>
-      <input
-        type="file"
-        accept="image/jpeg, image/png, image/svg+xml"
-        onChange={(event) => setImage(event.target.files[0])}
-      />
-      <label>Product</label>
-      <input
-        type="text"
-        value={product}
-        placeholder="Product sold by facility e.g. 'Ticket'"
-        required
-        aria-required
-        onChange={(event) => setProduct(event.target.value)}
-      />
-      <label>Price</label>
-      <input
-        type="number"
-        value={price}
-        required
-        aria-required
-        min={minPrice}
-        max={maxPrice}
-        onChange={(event) => setPrice(event.target.value)}
-      />
-      <label>Minimum Price</label>
-      <input
-        type="number"
-        value={minPrice}
-        required
-        aria-required
-        min={0}
-        max={price}
-        onChange={(event) => setMinPrice(event.target.value)}
-      />
-      <label>Maximum Price</label>
-      <input
-        type="number"
-        value={maxPrice}
-        required
-        aria-required
-        min={price}
-        max={Number.MAX_SAFE_INTEGER}
-        onChange={(event) => setMaxPrice(event.target.value)}
-      />
-      <button type="button" onClick={submit}>
-        Add Facility
-      </button>
+    <form className="facilityForm">
+      <fieldset>
+        <legend>Facility Data</legend>
+        <div className="form-row">
+          <label>Name</label>
+          <input
+            type="text"
+            value={name}
+            placeholder="Name of Facility"
+            required
+            aria-required
+            onChange={(event) => setName(event.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label>Description</label>
+        </div>
+        <div className="form-row">
+          <input
+            type="text"
+            value={description}
+            placeholder="Description of Facility"
+            onChange={(event) => setDescription(event.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label>Image (max 8MB)</label>
+          <input
+            type="file"
+            accept="image/jpeg, image/png, image/svg+xml"
+            onChange={(event) => setImage(event.target.files[0])}
+          />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Product Data</legend>
+        <div className="form-row">
+          <label>Product</label>
+          <input
+            type="text"
+            value={product}
+            placeholder="Product sold by facility e.g. 'Ticket'"
+            required
+            aria-required
+            onChange={(event) => setProduct(event.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label>Price</label>
+          <input
+            type="number"
+            value={price}
+            required
+            aria-required
+            min={minPrice}
+            max={maxPrice}
+            onChange={(event) => setPrice(event.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label>Minimum Price</label>
+          <input
+            type="number"
+            value={minPrice}
+            required
+            aria-required
+            min={0}
+            max={price}
+            onChange={(event) => setMinPrice(event.target.value)}
+          />
+        </div>
+        <div className="form-row">
+          <label>Maximum Price</label>
+          <input
+            type="number"
+            value={maxPrice}
+            required
+            aria-required
+            min={price}
+            max={Number.MAX_SAFE_INTEGER}
+            onChange={(event) => setMaxPrice(event.target.value)}
+          />
+        </div>
+      </fieldset>
+      <div className="formButtons">
+        <button type="button" onClick={submit}>
+          Add Facility
+        </button>
+      </div>
     </form>
   );
 };
