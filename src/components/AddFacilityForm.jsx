@@ -78,8 +78,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
           <label>Description</label>
         </div>
         <div className="form-row">
-          <input
-            type="text"
+          <textarea
             value={description}
             placeholder="Description of Facility"
             onChange={(event) => setDescription(event.target.value)}
