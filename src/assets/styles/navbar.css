@@ -1,35 +1,28 @@
-/* Removes any pre-defined margin/padding on some browsers */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family:
-    "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans",
-    Arial, sans-serif;
+.nav-bar {
+  width: 100%;
 }
 
-#root {
-  min-width: 100vw;
+.nav-bar ul {
+  list-style: none;
 }
 
-header {
-  min-height: 9vh;
+.nav-bar li {
+  width: 100%;
+  text-align: center;
+  background-color: lightblue;
+  border: 3px darkcyan outset;
 }
 
-nav {
-  min-height: 3vh;
+.nav-link {
+  display: block;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition-duration: 0.5;
 }
 
-footer {
-  min-height: 3vh;
+.nav-link:hover {
+  background-color: lightskyblue;
 }
-
-#wrapper {
-  background-color: white;
-  min-height: 85vh;
-}
-
-/* Code below is to be copy-pasted to other css so the sizes are consistent */
 
 /**=================================================== 
    MOBILE VIEW : 0px to 600px
@@ -41,13 +34,25 @@ footer {
    TABLET POTRAIT VIEW : 601px and greater
    ===================================================*/
 @media only screen and (min-width: 601px) {
+  .nav-bar li {
+    width: 33%;
+    display: block;
+    float: left;
+  }
+
+  .nav-bar::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
 }
 
 /**===================================================
    TABLET LANDSCAPE & DESKTOP VIEW : 901px and greater
    ===================================================*/
 @media only screen and (min-width: 901px) {
-  #root {
-    min-width: 90vw;
+  form.facilityForm > fieldset {
+    flex: 1 1 44%;
+    margin: 0 0.4em;
   }
 }
