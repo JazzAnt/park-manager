@@ -32,13 +32,100 @@ function App() {
   const MAX_RATING = 5;
   const PRICE_CHANGE = 0.25;
 
+  const onRate = (id, rating) => {
+    const updated = facilities.map((facility) =>
+      facility.id === id ? { ...facility, rating } : facility,
+    );
+    setFacilities(updated);
+  };
+  const increasePrice = (id, price, increaseBy, maxPrice) => {
+    const updated = facilities.map((facility) =>
+      facility.id === id
+        ? {
+            ...facility,
+            // If new price exceeds maxPrice then set it as maxPrice instead
+            price:
+              price + increaseBy > maxPrice ? maxPrice : price + increaseBy,
+          }
+        : facility,
+    );
+    setFacilities(updated);
+  };
+  const decreasePrice = (id, price, decreaseBy, minPrice) => {
+    const updated = facilities.map((facility) =>
+      facility.id === id
+        ? {
+            ...facility,
+            // If new price s below minPrice then set it as minPrice instead
+            price:
+              price - decreaseBy < minPrice ? minPrice : price - decreaseBy,
+          }
+        : facility,
+    );
+    setFacilities(updated);
+  };
+  const onMaintenanceChange = (id) => {
+    const updated = facilities.map((facility) =>
+      facility.id === id
+        ? {
+            ...facility,
+            maintenance: !facility.maintenance, // This is a checkbox so it just flips the existing bool
+            maintenanceDate: getCurrentDate(),
+            // Date is reset so that if checkbox goes from false to true, date is set to
+            // current date as the default date. If it goes from true to false also set
+            // the date since it'll be hidden anyways so it's fine.
+          }
+        : facility,
+    );
+    setFacilities(updated);
+  };
+  const onDateChange = (id, date) => {
+    const updated = facilities.map((facility) =>
+      facility.id === id ? { ...facility, maintenanceDate: date } : facility,
+    );
+    setFacilities(updated);
+  };
+  const onDemolish = (id) => {
+    const updated = facilities.filter((facility) => facility.id !== id);
+    setFacilities(updated);
+  };
+  const addNewFacility = (
+    name,
+    description,
+    imgSrc,
+    imgCredit,
+    product,
+    price,
+    minPrice,
+    maxPrice,
+  ) => {
+    const updated = [
+      ...facilities,
+      {
+        id: v4(),
+        name,
+        description,
+        imgSrc, //placeholder, replace with custom image adding if possible
+        imgCredit,
+        product,
+        rating: 0,
+        price,
+        minPrice,
+        maxPrice,
+        maintenance: false,
+        maintenanceDate: "1998-10-07",
+      },
+    ];
+    setFacilities(updated);
+  };
+
   return (
     <>
       <Header
         title="Park Management Site"
         subtitle="Manage Your Facilities Here"
       />
-      <NavBar/>
+      <NavBar />
       <div id="wrapper">
         <Routes>
           <Route
@@ -47,112 +134,19 @@ function App() {
               <FacilityList
                 facilities={facilities}
                 maxRating={MAX_RATING}
-                onRate={(id, rating) => {
-                  const updated = facilities.map((facility) =>
-                    facility.id === id ? { ...facility, rating } : facility,
-                  );
-                  setFacilities(updated);
-                }}
+                onRate={onRate}
                 priceChange={PRICE_CHANGE}
-                //Could just use the const PRICE_CHANGE as increaseBy/decreaseBy but made it an argument
-                //just in case I change my mind and want to give each facility a different increment
-                increasePrice={(id, price, increaseBy, maxPrice) => {
-                  const updated = facilities.map((facility) =>
-                    facility.id === id
-                      ? {
-                          ...facility,
-                          // If new price exceeds maxPrice then set it as maxPrice instead
-                          price:
-                            price + increaseBy > maxPrice
-                              ? maxPrice
-                              : price + increaseBy,
-                        }
-                      : facility,
-                  );
-                  setFacilities(updated);
-                }}
-                decreasePrice={(id, price, decreaseBy, minPrice) => {
-                  const updated = facilities.map((facility) =>
-                    facility.id === id
-                      ? {
-                          ...facility,
-                          // If new price s below minPrice then set it as minPrice instead
-                          price:
-                            price - decreaseBy < minPrice
-                              ? minPrice
-                              : price - decreaseBy,
-                        }
-                      : facility,
-                  );
-                  setFacilities(updated);
-                }}
-                onMaintenanceChange={(id) => {
-                  const updated = facilities.map((facility) =>
-                    facility.id === id
-                      ? {
-                          ...facility,
-                          maintenance: !facility.maintenance, // This is a checkbox so it just flips the existing bool
-                          maintenanceDate: getCurrentDate(),
-                          // Date is reset so that if checkbox goes from false to true, date is set to
-                          // current date as the default date. If it goes from true to false also set
-                          // the date since it'll be hidden anyways so it's fine.
-                        }
-                      : facility,
-                  );
-                  setFacilities(updated);
-                }}
-                onDateChange={(id, date) => {
-                  const updated = facilities.map((facility) =>
-                    facility.id === id
-                      ? { ...facility, maintenanceDate: date }
-                      : facility,
-                  );
-                  setFacilities(updated);
-                }}
-                onDemolish={(id) => {
-                  const updated = facilities.filter(
-                    (facility) => facility.id !== id,
-                  );
-                  setFacilities(updated);
-                }}
+                increasePrice={increasePrice}
+                decreasePrice={decreasePrice}
+                onMaintenanceChange={onMaintenanceChange}
+                onDateChange={onDateChange}
+                onDemolish={onDemolish}
               />
             }
           />
           <Route
             path="/add"
-            element={
-              <AddFacilityForm
-                addNewFacility={(
-                  name,
-                  description,
-                  imgSrc,
-                  imgCredit,
-                  product,
-                  price,
-                  minPrice,
-                  maxPrice,
-                ) => {
-                  const updated = [
-                    ...facilities,
-                    {
-                      id: v4(),
-                      name,
-                      description,
-                      imgSrc, //placeholder, replace with custom image adding if possible
-                      imgCredit,
-                      product,
-                      rating: 0,
-                      price,
-                      minPrice,
-                      maxPrice,
-                      maintenance: false,
-                      maintenanceDate: "1998-10-07",
-                    },
-                  ];
-                  setFacilities(updated);
-                }}
-              />
-            }
+            element={<AddFacilityForm addNewFacility={addNewFacility} />}
           />
         </Routes>
       </div>
@@ -166,5 +160,6 @@ export default App;
 /**
  * TODO LIST
  * - Fix styling (add css and remember to import it here)
+ * - Fix display look weird if there's less than 2 facilities
  * - (optional) add option for user to upload image
  */
