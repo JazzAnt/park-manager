@@ -6,11 +6,11 @@ import "./App.css";
 import "./assets/styles/reset.css";
 import "./assets/styles/facilityForm.css";
 import "./assets/styles/facility.css";
+import "./assets/styles/navbar.css";
 
 import data from "./assets/services/data.json";
 
 import Header from "./components/Header";
-import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import FacilityList from "./components/FacilityList";
 import AddFacilityForm from "./components/AddFacilityForm";
@@ -125,7 +125,6 @@ function App() {
         title="Park Management Site"
         subtitle="Manage Your Facilities Here"
       />
-      <NavBar />
       <div id="wrapper">
         <Routes>
           <Route
