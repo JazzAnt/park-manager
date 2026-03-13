@@ -41,7 +41,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
     setImage(undefined);
     // Changing the file input key is done so that React is forced to reload the element
     // which is used to remove the visual indication that a file has been uploaded.
-    setFileKey(fileKey ? 0 : 1); 
+    setFileKey(fileKey ? 0 : 1);
     setProduct("");
     setPrice(5);
     setMinPrice(1);
@@ -50,19 +50,19 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
 
   const submit = (event) => {
     event.preventDefault();
-    if (saveUploadedImage()) {
-      addNewFacility(
-        name,
-        description,
-        "vite.svg",
-        "",
-        product,
-        price,
-        minPrice,
-        maxPrice,
-      );
-      reset();
-    }
+    if (!saveUploadedImage()) return;
+    addNewFacility(
+      name,
+      description,
+      "vite.svg",
+      "Placeholder Image",
+      product,
+      price,
+      minPrice,
+      maxPrice,
+    );
+    reset();
+    navigate("/");
   };
 
   return (
