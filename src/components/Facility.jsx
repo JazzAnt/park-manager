@@ -2,6 +2,7 @@ import Image from "./Image";
 import Price from "./Price";
 import Rating from "./Rating";
 import Maintenance from "./Maintenance";
+import EditBtn from "./EditBtn";
 import Demolish from "./Demolish";
 
 const Facility = ({
@@ -23,6 +24,7 @@ const Facility = ({
   priceChange = 0,
   onMaintenanceChange = (f) => f,
   onDateChange = (f) => f,
+  onEditBtn = (f) => f,
   onDemolish = (f) => f,
 }) => {
   return (
@@ -60,6 +62,7 @@ const Facility = ({
         />
       </div>
       <div className="card-footer">
+        <EditBtn onEditBtn={() => onEditBtn(id)} />
         <Demolish onDemolish={() => onDemolish(id)} />
       </div>
     </div>

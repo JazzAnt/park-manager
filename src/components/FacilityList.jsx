@@ -8,6 +8,7 @@ const FacilityList = ({
   priceChange = 0,
   onMaintenanceChange = (f) => f,
   onDateChange = (f) => f,
+  onEditBtn = (f) => f,
   onDemolish = (f) => f,
 }) =>
   facilities.length === 0 ? (
@@ -29,6 +30,7 @@ const FacilityList = ({
             priceChange={priceChange}
             onMaintenanceChange={onMaintenanceChange}
             onDateChange={onDateChange}
+            onEditBtn={onEditBtn}
             onDemolish={onDemolish}
           />
         ))}

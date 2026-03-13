@@ -85,6 +85,9 @@ function App() {
     );
     setFacilities(updated);
   };
+  const onEditBtn = (id) => {
+
+  }
   const onDemolish = (id) => {
     const updated = facilities.filter((facility) => facility.id !== id);
     setFacilities(updated);
@@ -139,6 +142,7 @@ function App() {
                 decreasePrice={decreasePrice}
                 onMaintenanceChange={onMaintenanceChange}
                 onDateChange={onDateChange}
+                onEditBtn={onEditBtn}
                 onDemolish={onDemolish}
               />
             }
