@@ -1,5 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import FacilityForm from "./FacilityForm";
+
 const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(undefined);
@@ -48,7 +53,7 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
     setMaxPrice(20);
   };
 
-  const submit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
     if (!saveUploadedImage()) return;
     addNewFacility(
@@ -66,103 +71,24 @@ const AddFacilityForm = ({ addNewFacility = (f) => f }) => {
   };
 
   return (
-    <form className="facilityForm" onSubmit={(event) => submit(event)}>
-      <fieldset>
-        <legend>Facility Data</legend>
-        <div className="form-row">
-          <label>Name</label>
-          <input
-            type="text"
-            value={name}
-            placeholder="Name of Facility"
-            required
-            aria-required
-            onChange={(event) => setName(event.target.value)}
-          />
-        </div>
-        <div className="form-row">
-          <label>Description</label>
-          <textarea
-            value={description}
-            placeholder="Description of Facility"
-            onChange={(event) => setDescription(event.target.value)}
-          />
-        </div>
-        <div className="form-row">
-          <label>Image (max 8MB)</label>
-          <input
-            type="file"
-            accept="image/jpeg, image/png, image/svg+xml"
-            onChange={(event) => setImage(event.target.files[0])}
-            key={fileKey}
-          />
-        </div>
-      </fieldset>
-      <fieldset>
-        <legend>Product Data</legend>
-        <div className="form-row">
-          <label>Product</label>
-          <input
-            type="text"
-            value={product}
-            placeholder="Product sold by facility e.g. 'Ticket'"
-            required
-            aria-required
-            onChange={(event) => setProduct(event.target.value)}
-          />
-        </div>
-        <div className="form-row">
-          <label>Price</label>
-          <input
-            type="number"
-            value={price}
-            required
-            aria-required
-            min={minPrice}
-            max={maxPrice}
-            onChange={(event) => setPrice(event.target.value)}
-          />
-        </div>
-        <div className="form-row">
-          <label>Minimum Price</label>
-          <input
-            type="number"
-            value={minPrice}
-            required
-            aria-required
-            min={0}
-            max={price}
-            onChange={(event) => setMinPrice(event.target.value)}
-          />
-        </div>
-        <div className="form-row">
-          <label>Maximum Price</label>
-          <input
-            type="number"
-            value={maxPrice}
-            required
-            aria-required
-            min={price}
-            max={Number.MAX_SAFE_INTEGER}
-            onChange={(event) => setMaxPrice(event.target.value)}
-          />
-        </div>
-      </fieldset>
-      <div className="buttons">
-        <button
-          type="button"
-          className="btn btn-secondary"
-          onClick={() => {
-            if (confirm("Reset inputted values to default?")) reset();
-          }}
-        >
-          Reset
-        </button>
-        <button type="submit" className="btn btn-primary">
-          Add Facility
-        </button>
-      </div>
-    </form>
+    <FacilityForm
+      submitBtnText="Add Facility"
+      onSubmit={onSubmit}
+      name={name}
+      setName={setName}
+      description={description}
+      setDescription={setDescription}
+      fileKey={fileKey}
+      setImage={setImage}
+      product={product}
+      setProduct={setProduct}
+      price={price}
+      setPrice={setPrice}
+      minPrice={minPrice}
+      setMinPrice={setMinPrice}
+      maxPrice={maxPrice}
+      setMaxPrice={setMaxPrice}
+    />
   );
 };
 
