@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { v4 } from "uuid";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import "./App.css";
 import "./assets/styles/reset.css";
@@ -14,6 +14,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FacilityList from "./components/FacilityList";
 import AddFacilityForm from "./components/AddFacilityForm";
+import EditFacilityForm from "./components/EditFacilityForm";
 
 function getCurrentDate() {
   const now = new Date();
@@ -31,6 +32,7 @@ function App() {
   const [facilities, setFacilities] = useState(data);
   const MAX_RATING = 5;
   const PRICE_CHANGE = 0.25;
+  const navigate = useNavigate();
 
   const onRate = (id, rating) => {
     const updated = facilities.map((facility) =>
@@ -86,8 +88,8 @@ function App() {
     setFacilities(updated);
   };
   const onEditBtn = (id) => {
-
-  }
+    navigate(`/edit/${id}`)
+  };
   const onDemolish = (id) => {
     const updated = facilities.filter((facility) => facility.id !== id);
     setFacilities(updated);
@@ -121,6 +123,24 @@ function App() {
     ];
     setFacilities(updated);
   };
+  const editFacility = (
+    id,
+    name,
+    description,
+    // imgSrc,
+    // imgCredit,
+    product,
+    price,
+    minPrice,
+    maxPrice,
+  ) => {
+    const updated = facilities.map((facility) =>
+      facility.id === id
+        ? { ...facility, name, description, product, price, minPrice, maxPrice }
+        : facility,
+    );
+    setFacilities(updated);
+  };
 
   return (
     <>
@@ -151,6 +171,10 @@ function App() {
             path="/add"
             element={<AddFacilityForm addNewFacility={addNewFacility} />}
           />
+          <Route
+            path="/edit/:id"
+            element={<EditFacilityForm facilities={facilities} editFacility={editFacility}/>}
+          />
         </Routes>
       </div>
       <Footer />
@@ -162,7 +186,5 @@ export default App;
 
 /**
  * TODO LIST
- * - Fix styling (add css and remember to import it here)
- * - Fix display look weird if there's less than 2 facilities
- * - (optional) add option for user to upload image
+ * - (optional) add function for user to upload image
  */
