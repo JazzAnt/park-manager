@@ -15,6 +15,7 @@ import Footer from "./components/Footer";
 import FacilityList from "./components/FacilityList";
 import AddFacilityForm from "./components/AddFacilityForm";
 import EditFacilityForm from "./components/EditFacilityForm";
+import Metrics from "./components/Metrics";
 
 function getCurrentDate() {
   const now = new Date();
@@ -88,7 +89,7 @@ function App() {
     setFacilities(updated);
   };
   const onEditBtn = (id) => {
-    navigate(`/edit/${id}`)
+    navigate(`/edit/${id}`);
   };
   const onDemolish = (id) => {
     const updated = facilities.filter((facility) => facility.id !== id);
@@ -173,8 +174,14 @@ function App() {
           />
           <Route
             path="/edit/:id"
-            element={<EditFacilityForm facilities={facilities} editFacility={editFacility}/>}
+            element={
+              <EditFacilityForm
+                facilities={facilities}
+                editFacility={editFacility}
+              />
+            }
           />
+          <Route path="/metrics" element={<Metrics />} />
         </Routes>
       </div>
       <Footer />
