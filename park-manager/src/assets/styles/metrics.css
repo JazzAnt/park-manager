@@ -1,0 +1,47 @@
+.metrics-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 1.2em;
+}
+.metrics {
+  flex: 1 1 80vw;
+  margin: 0.8em 0;
+
+
+  padding: 2vw;
+  border: 0.2em rgb(184, 134, 11) outset;
+  border-radius: 0.4em;
+  background-color: rgb(255, 250, 232);
+}
+.metrics > h3 {
+  margin-left: 5%;
+  padding: 0 1em;
+  width: fit-content;
+  border: 0.2em rgb(216, 190, 19) outset;
+  border-radius: 0.36em;
+  background-color: rgb(216, 190, 19);
+  font-weight: bold;
+  margin-top: -2em;
+}
+
+/**=================================================== 
+   MOBILE VIEW : 0px to 600px
+   ===================================================*/
+@media only screen and (max-width: 600px) {
+}
+
+/**===================================================
+   TABLET POTRAIT VIEW : 601px and greater
+   ===================================================*/
+@media only screen and (min-width: 601px) {
+}
+
+/**===================================================
+   TABLET LANDSCAPE & DESKTOP VIEW : 901px and greater
+   ===================================================*/
+@media only screen and (min-width: 901px) {
+.metrics {
+    flex: 1 1 44%;
+  margin: 0.8em 1px;
+  }
+}

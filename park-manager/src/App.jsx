@@ -7,6 +7,7 @@ import "./assets/styles/reset.css";
 import "./assets/styles/facilityForm.css";
 import "./assets/styles/facility.css";
 import "./assets/styles/navbar.css";
+import "./assets/styles/metrics.css"
 
 import data from "./assets/services/data.json";
 

@@ -1,5 +1,5 @@
 import "chart.js/auto";
-import { Line, Bar } from "react-chartjs-2";
+import { Line, Bar, Doughnut, Pie } from "react-chartjs-2";
 const Metrics = () => {
   //TODO: Fetch data from database instead of static
   let labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
@@ -15,14 +15,14 @@ const Metrics = () => {
       },
       {
         label: "Log Flume",
-        data: [95, 99, 99, 115, 107, 109, 110],
+        data: [30, 60, 55, 90, 85, 110, 120],
         fill: false,
         borderColor: "blue",
         tension: 0.1,
       },
       {
         label: "Carousel",
-        data: [80, 81, 85, 90, 88, 85, 82],
+        data: [70, 55, 65, 45, 30, 40, 25],
         fill: false,
         borderColor: "green",
         tension: 0.1,
@@ -33,21 +33,73 @@ const Metrics = () => {
     labels: ["Roller Coaster", "Log Flume", "Carousel"],
     datasets: [
       {
-        data: [490, 510, 440],
-        backgroundColor: ["red", "blue", "green"]
+        label: "Rating",
+        data: [3.9, 4.8, 2.5],
+        backgroundColor: ["red", "blue", "green"],
+      },
+    ],
+  };
+  let data3 = {
+    labels: ["Roller Coaster", "Log Flume", "Carousel"],
+    datasets: [
+      {
+        label: "Revenue",
+        data: [610, 450, 240],
+        backgroundColor: ["red", "blue", "green"],
+      },
+    ],
+  };
+  let data4 = {
+    labels: ["Roller Coaster", "Log Flume", "Carousel"],
+    datasets: [
+      {
+        label: "Customers",
+        data: [291060, 149888, 133490],
+        backgroundColor: ["red", "blue", "green"],
       },
     ],
   };
   return (
-    <div className="metrics">
-      <h1>Performance Metrics</h1>
-      <div>
-        <h2>Profits per Month</h2>
-        <Line data={data1} options={{scales: {y:{beginAtZero:true}}}}/>
+    <div className="metrics-container">
+      <div className="metrics">
+        <h3>Profits per Month</h3>
+        <div className="graph">
+          <Line
+            data={data1}
+            options={{ scales: { y: { beginAtZero: true } } }}
+          />
+        </div>
       </div>
-      <div>
-        <h2>Profits this Year</h2>
-        <Bar data={data2} options={{scales: {y:{beginAtZero:true}}}}/>
+      <div className="metrics">
+        <h3>Ratings</h3>
+        <div className="graph">
+          <Bar
+            data={data2}
+            options={{ scales: { y: { beginAtZero: true } } }}
+          />
+        </div>
+      </div>
+      <div className="metrics">
+        <h3>Profits this Year</h3>
+        <div className="graph">
+          <Doughnut
+            data={data3}
+            options={{
+              scales: { x: { display: false }, y: { display: false } },
+            }}
+          />
+        </div>
+      </div>
+      <div className="metrics">
+        <h3>Customers this Year</h3>
+        <div className="graph">
+          <Pie
+            data={data4}
+            options={{
+              scales: { x: { display: false }, y: { display: false } },
+            }}
+          />
+        </div>
       </div>
     </div>
   );
