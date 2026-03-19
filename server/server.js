@@ -1,10 +1,11 @@
 import express from "express";
+import facilityRouter from "./routes/facilityRoutes.js";
 
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get("/", (req,res) => {
-    res.send("<h1>Server is up and running.</h1>")
-})
+app.use("/", facilityRouter);
 
 const PORT = 5000;
 app.listen(PORT, () => {
