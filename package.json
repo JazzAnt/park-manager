@@ -1,0 +1,26 @@
+{
+  "name": "park-manager",
+  "version": "1.0.0",
+  "description": "Manage park facilities.",
+  "homepage": "https://github.com/JazzAnt/park-manager#readme",
+  "bugs": {
+    "url": "https://github.com/JazzAnt/park-manager/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JazzAnt/park-manager.git"
+  },
+  "license": "ISC",
+  "author": "Jason A. Januar",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm start",
+    "client": "cd client && npm run dev"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
