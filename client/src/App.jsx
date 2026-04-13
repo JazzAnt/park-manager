@@ -11,6 +11,7 @@ import "./assets/styles/metrics.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FacilityList from "./components/FacilityList";
+import CategoryList from "./components/CategoryList.jsx";
 import AddFacilityForm from "./components/AddFacilityForm";
 import EditFacilityForm from "./components/EditFacilityForm";
 import Metrics from "./components/Metrics";
@@ -221,6 +222,24 @@ function App() {
             path="/"
             element={
               <FacilityList
+                facilities={facilities}
+                priceChange={PRICE_CHANGE}
+                minPrice={MIN_PRICE}
+                maxPrice={MAX_PRICE}
+                onRate={onRate}
+                increasePrice={increasePrice}
+                decreasePrice={decreasePrice}
+                onMaintenanceChange={onMaintenanceChange}
+                onDateChange={onDateChange}
+                onEditBtn={onEditBtn}
+                onDemolish={onDemolish}
+              />
+            }
+          />
+          <Route
+            path="/categories"
+            element={
+              <CategoryList
                 facilities={facilities}
                 priceChange={PRICE_CHANGE}
                 minPrice={MIN_PRICE}
