@@ -172,8 +172,8 @@ function App() {
    *******************************************************************/
   const onRate = async (id, rating) => {
     const facility = await getFacility(id);
-    console.log(facility)
-    const updatedFacility = {...facility, rating};
+    console.log(facility);
+    const updatedFacility = { ...facility, rating };
     await editFacility(id, updatedFacility, false);
   };
   const increasePrice = async (id) => {
@@ -183,7 +183,7 @@ function App() {
       facility.price + PRICE_CHANGE > MAX_PRICE
         ? MAX_PRICE
         : facility.price + PRICE_CHANGE;
-    const updatedFacility = {...facility, price};
+    const updatedFacility = { ...facility, price };
     await editFacility(id, updatedFacility, false);
   };
   const decreasePrice = async (id) => {
@@ -193,20 +193,20 @@ function App() {
       facility.price + PRICE_CHANGE < MIN_PRICE
         ? MIN_PRICE
         : facility.price + PRICE_CHANGE;
-    const updatedFacility = {...facility, price};
+    const updatedFacility = { ...facility, price };
     await editFacility(id, updatedFacility, false);
   };
   const onMaintenanceChange = async (id) => {
     const facility = await getFacility(id);
     const maintenance = !facility.maintenance; // This is a checkbox so it just flips the existing bool
     const maintenanceDate = new Date().toISOString(); // Reset date on checkbox tick
-    const updatedFacility = {...facility, maintenance, maintenanceDate};
+    const updatedFacility = { ...facility, maintenance, maintenanceDate };
     await editFacility(id, updatedFacility, false);
   };
   const onDateChange = async (id, date) => {
     const facility = await getFacility(id);
     const maintenanceDate = new Date(date).toISOString();
-    const updatedFacility = {...facility, maintenanceDate};
+    const updatedFacility = { ...facility, maintenanceDate };
     await editFacility(id, updatedFacility, false);
   };
 
@@ -274,7 +274,10 @@ function App() {
               />
             }
           />
-          <Route path="/metrics" element={<Metrics />} />
+          <Route
+            path="/metrics"
+            element={<Metrics facilities={facilities} />}
+          />
         </Routes>
       </div>
       <Footer />

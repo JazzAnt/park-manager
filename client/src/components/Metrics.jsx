@@ -1,9 +1,33 @@
 import "chart.js/auto";
 import { Line, Bar, Doughnut, Pie } from "react-chartjs-2";
-const Metrics = () => {
+const Metrics = ({ facilities = [] }) => {
+  const rollerCoasters = facilities.filter(
+    (facility) => facility.category === "Roller Coaster",
+  );
+  const gentleRides = facilities.filter(
+    (facility) => facility.category === "Gentle Ride",
+  );
+  const thrillRides = facilities.filter(
+    (facility) => facility.category === "Thrill Ride",
+  );
+  const waterRides = facilities.filter(
+    (facility) => facility.category === "Water Ride",
+  );
+  const foodStalls = facilities.filter(
+    (facility) => facility.category === "Food Stall",
+  );
+
+  const getAverageRating = (list) => {
+    const ratingSum = list.reduce((sum, facility) => {
+      return sum + facility.rating;
+    }, 0);
+    const length = list.length;
+    return ratingSum / length;
+  };
+
   //TODO: Fetch data from database instead of static
   let labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
-  let data1 = {
+  let monthly_profit = {
     labels: labels,
     datasets: [
       {
@@ -29,17 +53,29 @@ const Metrics = () => {
       },
     ],
   };
-  let data2 = {
-    labels: ["Roller Coaster", "Log Flume", "Carousel"],
+  let ratings = {
+    labels: [
+      "Roller Coasters",
+      "Gentle Rides",
+      "Thrill Rides",
+      "Water Rides",
+      "Food Stalls",
+    ],
     datasets: [
       {
-        label: "Rating",
-        data: [3.9, 4.8, 2.5],
-        backgroundColor: ["red", "blue", "green"],
+        label: "Average Rating",
+        data: [
+          getAverageRating(rollerCoasters),
+          getAverageRating(gentleRides),
+          getAverageRating(thrillRides),
+          getAverageRating(waterRides),
+          getAverageRating(foodStalls),
+        ],
+        backgroundColor: ["red", "orange", "purple", "blue", "green"],
       },
     ],
   };
-  let data3 = {
+  let yearly_profit = {
     labels: ["Roller Coaster", "Log Flume", "Carousel"],
     datasets: [
       {
@@ -49,7 +85,7 @@ const Metrics = () => {
       },
     ],
   };
-  let data4 = {
+  let throughput = {
     labels: ["Roller Coaster", "Log Flume", "Carousel"],
     datasets: [
       {
@@ -65,7 +101,7 @@ const Metrics = () => {
         <h3>Profits per Month</h3>
         <div className="graph">
           <Line
-            data={data1}
+            data={monthly_profit}
             options={{ scales: { y: { beginAtZero: true } } }}
           />
         </div>
@@ -74,7 +110,7 @@ const Metrics = () => {
         <h3>Ratings</h3>
         <div className="graph">
           <Bar
-            data={data2}
+            data={ratings}
             options={{ scales: { y: { beginAtZero: true } } }}
           />
         </div>
@@ -83,7 +119,7 @@ const Metrics = () => {
         <h3>Profits this Year</h3>
         <div className="graph">
           <Doughnut
-            data={data3}
+            data={yearly_profit}
             options={{
               scales: { x: { display: false }, y: { display: false } },
             }}
@@ -94,7 +130,7 @@ const Metrics = () => {
         <h3>Customers this Year</h3>
         <div className="graph">
           <Pie
-            data={data4}
+            data={throughput}
             options={{
               scales: { x: { display: false }, y: { display: false } },
             }}
