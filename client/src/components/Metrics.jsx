@@ -25,6 +25,18 @@ const Metrics = ({ facilities = [] }) => {
     return ratingSum / length;
   };
 
+  const getTotalProfits = (list) => {
+    return list.reduce((sum, facility) => {
+      return sum + facility.profitsThisYear;
+    }, 0);
+  }
+
+  const getTotalCustomers = (list) => {
+    return list.reduce((sum, facility) => {
+      return sum + facility.customersThisYear;
+    }, 0);
+  }
+
   //TODO: Fetch data from database instead of static
   let labels = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"];
   let monthly_profit = {
@@ -76,22 +88,46 @@ const Metrics = ({ facilities = [] }) => {
     ],
   };
   let yearly_profit = {
-    labels: ["Roller Coaster", "Log Flume", "Carousel"],
+    labels: [
+      "Roller Coasters",
+      "Gentle Rides",
+      "Thrill Rides",
+      "Water Rides",
+      "Food Stalls",
+    ],
     datasets: [
       {
         label: "Revenue",
-        data: [610, 450, 240],
-        backgroundColor: ["red", "blue", "green"],
+        data: [
+          getTotalProfits(rollerCoasters),
+          getTotalProfits(gentleRides),
+          getTotalProfits(thrillRides),
+          getTotalProfits(waterRides),
+          getTotalProfits(foodStalls),
+        ],
+        backgroundColor: ["red", "orange", "purple", "blue", "green"],
       },
     ],
   };
   let throughput = {
-    labels: ["Roller Coaster", "Log Flume", "Carousel"],
+    labels: [
+      "Roller Coasters",
+      "Gentle Rides",
+      "Thrill Rides",
+      "Water Rides",
+      "Food Stalls",
+    ],
     datasets: [
       {
-        label: "Customers",
-        data: [291060, 149888, 133490],
-        backgroundColor: ["red", "blue", "green"],
+        label: "Throughput",
+        data: [
+          getTotalCustomers(rollerCoasters),
+          getTotalCustomers(gentleRides),
+          getTotalCustomers(thrillRides),
+          getTotalCustomers(waterRides),
+          getTotalCustomers(foodStalls),
+        ],
+        backgroundColor: ["red", "orange", "purple", "blue", "green"],
       },
     ],
   };
