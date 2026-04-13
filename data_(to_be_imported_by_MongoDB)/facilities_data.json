@@ -2,331 +2,361 @@
   {
     "name": "Carousel",
     "description": "Customers can ride horses and spin around on this fun ride.",
+    "category": "Gentle Ride",
     "image": "https://pixabay.com/images/download/44833-carousel-168125_1920.jpg",
     "imageSource": "https://pixabay.com/photos/carousel-carnival-amusement-ride-168125/",
     "product": "Ticket",
     "rating": 3,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Sunset Coaster",
     "description": "A fun coaster that is open all day long but provides especially good view on the evening.",
+    "category": "Roller Coaster",
     "image": "https://pixabay.com/images/download/rmacwheeler-park-2454583_1920.jpg",
     "imageSource": "https://pixabay.com/photos/park-sunset-roller-coaster-tourism-2454583/",
     "product": "Ticket",
     "rating": 5,
     "price": 10,
     "maintenance": true,
-    "maintenanceDate": "2026-08-09"
+    "maintenanceDate": "2026-08-09T00:00:00Z"
   },
   {
     "name": "Log Flume Ride",
     "description": "An exciting water ride for customers prepared to get a bit wet.",
+    "category": "Water Ride",
     "image": "https://pixabay.com/images/download/eduardovieiraphoto-roller-coaster-5642726_1920.jpg",
     "imageSource": "https://pixabay.com/photos/roller-coaster-amusement-park-ride-5642726/",
     "product": "Ticket",
     "rating": 4,
     "price": 8,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Steel Wild Mouse",
     "description": "A thrilling coaster with many sharp turns.",
+    "category": "Roller Coaster",
     "image": "https://pixabay.com/images/download/richi-roller-coaster-201503_1920.jpg",
     "imageSource": "https://pixabay.com/photos/roller-coaster-wave-quickly-201503/",
     "product": "Ticket",
     "rating": 5,
     "price": 10,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Hotdog Stand",
     "description": "A quick snack for hungry customers",
+    "category": "Food Stall",
     "image": "https://pixabay.com/images/download/9699804-sausage-4207649_1920.jpg",
     "imageSource": "https://pixabay.com/photos/sausage-bread-roll-hotdog-4207649/",
     "product": "Hotdog",
     "rating": 2,
     "price": 5,
     "maintenance": true,
-    "maintenanceDate": "2026-06-01"
+    "maintenanceDate": "2026-06-01T00:00:00Z"
   },
   {
     "name": "Ferris Wheel",
     "description": "Take a seat and enjoy the view of the entire park.",
+    "category": "Gentle Ride",
     "image": "https://pixabay.com/images/download/makabera-ferris-wheel-6925693_1920.jpg",
     "imageSource": "https://pixabay.com/photos/ferris-wheel-amusement-park-ride-6925693/",
     "product": "ticket",
     "rating": 3,
     "price": 5,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Hedge Maze",
     "description": "A fun and challenging hedge mase that'll leave you confused!",
+    "category": "Gentle Ride",
     "image": "https://pixabay.com/images/download/loggawiggler-maze-511153_1920.jpg",
     "imageSource": "https://pixabay.com/photos/maze-labyrinth-glendurgan-gardens-511153/",
     "product": "ticket",
     "rating": 3,
     "price": 0,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Wooden Coaster",
     "description": "The park's flagship coaster that was build back in 1690.",
+    "category": "Roller Coaster",
     "image": "https://pixabay.com/images/download/12019-kings-island-211994_1920.jpg",
     "imageSource": "https://pixabay.com/photos/kings-island-ohio-roller-coaster-211994/",
     "product": "ticket",
     "rating": 5,
     "price": 10,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Bumper Cars",
     "description": "Electric powered cars where crashing into your friends is the whole point.",
+    "category": "Thrill Ride",
     "image": "https://pixabay.com/images/download/stanvpetersen-bumper-car-2369930_1920.jpg",
     "imageSource": "https://pixabay.com/photos/bumper-car-fair-bumper-fun-2369930/",
     "product": "Ticket",
     "rating": 4,
     "price": 6,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Cotton Candy Cart",
     "description": "Sweet, fluffy clouds of sugar spun fresh on a paper cone.",
+    "category": "Food Stall",
     "image": "https://pixabay.com/images/download/mindsteel-cotton-candy-6380092_1920.jpg",
     "imageSource": "https://pixabay.com/photos/cotton-candy-sweet-food-containers-6380092/",
     "product": "Cotton Candy",
     "rating": 5,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Haunted Mansion",
     "description": "A spooky walkthrough experience with ghosts, ghouls, and jump scares.",
+    "category": "Thrill Ride",
     "image": "https://pixabay.com/images/download/publicdomainpictures-mansion-17771_1920.jpg",
     "imageSource": "https://pixabay.com/photos/mansion-gothic-haunted-house-17771/",
     "product": "Ticket",
     "rating": 4,
     "price": 7,
     "maintenance": true,
-    "maintenanceDate": "2026-10-31"
+    "maintenanceDate": "2026-10-31T00:00:00Z"
   },
   {
     "name": "Ice Cream Parlor",
     "description": "Cool down with a variety of flavors and toppings in a waffle cone.",
+    "category": "Food Stall",
     "image": "https://pixabay.com/images/download/federicoghedini-ice-cream-maker-1286520_1920.jpg",
     "imageSource": "https://pixabay.com/photos/ice-cream-maker-ice-cream-shop-1286520/",
     "product": "Scoop",
     "rating": 5,
     "price": 5,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Tea Cups",
     "description": "A classic spinning ride where you control how fast your cup whirls.",
+    "category": "Gentle Ride",
     "image": "https://pixabay.com/images/download/jillwellington-carnival-2456913_1920.jpg",
     "imageSource": "https://pixabay.com/photos/carnival-summer-tea-cup-ride-2456913/",
     "product": "Ticket",
     "rating": 3,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Pirate Ship",
     "description": "A giant swinging boat that makes you feel weightless at the peak.",
+    "category": "Thrill Ride",
     "image": "https://pixabay.com/images/download/ericdunham-pirate-ship-3873843_1920.jpg",
     "imageSource": "https://pixabay.com/photos/pirate-ship-ship-in-a-bottle-ship-3873843/",
     "product": "Ticket",
     "rating": 4,
     "price": 6,
     "maintenance": true,
-    "maintenanceDate": "2026-05-15"
+    "maintenanceDate": "2026-05-15T00:00:00Z"
   },
   {
     "name": "Souvenir Shop",
     "description": "Take home a piece of the park with t-shirts, plushies, and hats.",
+    "category": "Misc Stall",
     "image": "https://pixabay.com/images/download/3282700-clothing-1847092_1920.jpg",
     "imageSource": "https://pixabay.com/photos/clothing-pet-chicago-tourism-1847092/",
     "product": "Merchandise",
     "rating": 3,
     "price": 15,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Inverted Coaster",
     "description": "A high-speed coaster where the track is above your head and your feet dangle.",
+    "category": "Roller Coaster",
     "image": "https://pixabay.com/images/download/ignartonosbg-roller-coaster-9749194_1920.jpg",
     "imageSource": "https://pixabay.com/photos/roller-coaster-scare-game-9749194/",
     "product": "Ticket",
     "rating": 5,
     "price": 12,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Popcorn Stall",
     "description": "Freshly popped buttery corn, the perfect walking snack.",
+    "category": "Food Stall",
     "image": "https://pixabay.com/images/download/anncapictures-popcorn-1433327_1920.jpg",
     "imageSource": "https://pixabay.com/photos/popcorn-movie-theater-theatre-food-1433327/",
     "product": "Bucket",
     "rating": 4,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Sky Tram",
     "description": "A relaxing cable car ride providing transportation across the park.",
+    "category": "Gentle Ride",
     "image": "https://pixabay.com/images/download/jatinkanand-cable-cars-6605261_1920.jpg",
     "imageSource": "https://pixabay.com/photos/cable-cars-fog-mountain-india-mist-6605261/",
     "product": "Ticket",
     "rating": 3,
     "price": 5,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Shooting Gallery",
     "description": "Test your aim with laser rifles to win oversized stuffed prizes.",
+    "category": "Misc Stall",
     "image": "https://pixabay.com/images/download/hans-balloons-61635_1920.jpg",
     "imageSource": "https://pixabay.com/photos/balloons-multicoloured-61635/",
     "product": "Round",
     "rating": 3,
     "price": 3,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Pizza Pavilion",
     "description": "Hot, cheesy slices of pepperoni and cheese pizza.",
+    "category": "Food Stall",
     "image": "https://pixabay.com/images/download/zuzi99-pizza-3010062_1920.jpg",
     "imageSource": "https://pixabay.com/photos/pizza-plate-food-cheese-lunch-3010062/",
     "product": "Slice",
     "rating": 4,
     "price": 6,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Kiddie Train",
     "description": "A slow-moving train ride perfect for the youngest visitors.",
+    "category": "Gentle Ride",
     "image": "https://pixabay.com/images/download/catonauts-locomotive-50044_1920.jpg",
     "imageSource": "https://pixabay.com/photos/locomotive-vehicles-kiddy-train-50044/",
     "product": "Ticket",
     "rating": 4,
     "price": 3,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Wave Pool",
     "description": "An artificial beach with waves generated every ten minutes.",
+    "category": "Water Ride",
     "image": "https://pixabay.com/images/download/ignartonosbg-swimming-pool-8306716_1920.jpg",
     "imageSource": "https://pixabay.com/photos/swimming-pool-water-surface-surface-8306716/",
     "product": "Entry",
     "rating": 5,
     "price": 15,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Petting Zoo",
     "description": "Feed and pet friendly farm animals like goats and sheep.",
+    "category": "Gentle Ride",
     "image": "https://pixabay.com/images/download/annigje-young-2811855_1920.jpg",
     "imageSource": "https://pixabay.com/photos/young-goat-baby-petting-zoo-2811855/",
     "product": "Feed Bag",
     "rating": 4,
     "price": 2,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Giant Slide",
     "description": "Climb up and slide down on a burlap sack for maximum speed.",
-    "image": "https://pixabay.com/photos/slide-giant-slide-fair-oktoberfest-3721052/",
-    "imageSource": "https://pixabay.com/images/download/ralphs_fotos-slide-3721052_1920.jpg",
+    "category": "Gentle Ride",
+    "image": "https://pixabay.com/images/download/ralphs_fotos-slide-3721052_1920.jpg",
+    "imageSource": "https://pixabay.com/photos/slide-giant-slide-fair-oktoberfest-3721052/",
     "product": "Ticket",
     "rating": 3,
     "price": 2,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Paddle Boats",
     "description": "Relax on the park's central lake in a swan-shaped paddle boat.",
-    "image": "https://pixabay.com/photos/lake-river-kayak-canoe-fun-4364335/",
-    "imageSource": "https://pixabay.com/images/download/thinhla-lake-4364335_1920.jpg",
+    "category": "Gentle Ride",
+    "image": "https://pixabay.com/images/download/thinhla-lake-4364335_1920.jpg",
+    "imageSource": "https://pixabay.com/photos/lake-river-kayak-canoe-fun-4364335/",
     "product": "Rental",
     "rating": 3,
     "price": 8,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Gyro Drop",
     "description": "The seats rotate as you climb, offering a 360-degree view before the drop.",
+    "category": "Thrill Ride",
     "image": "https://pixabay.com/images/download/fietzfotos-ride-5722099_1920.jpg",
     "imageSource": "https://pixabay.com/photos/ride-amusement-park-fair-theme-park-5722099/",
     "product": "Ticket",
     "rating": 5,
     "price": 13,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Mini Golf",
     "description": "An 18-hole course featuring windmills, waterfalls, and tunnels.",
+    "category": "Gentle Ride",
     "image": "https://pixabay.com/images/download/hans-mini-golf-1271970_1920.jpg",
     "imageSource": "https://pixabay.com/photos/mini-golf-mini-golf-course-1271970/",
     "product": "Game",
     "rating": 4,
     "price": 7,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Lemonade Stand",
     "description": "Freshly squeezed lemons and ice-cold water to beat the heat.",
+    "category": "Food Stall",
     "image": "https://pixabay.com/photos/lemonade-stand-lemonade-summer-2483297/",
     "imageSource": "https://pixabay.com/images/download/erikawittlieb-lemonade-stand-2483297_1920.jpg",
     "product": "Cup",
     "rating": 5,
     "price": 3,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Observatory Tower",
     "description": "An elevator-based tower that goes up slowly for photography opportunities.",
+    "category": "Gentle Ride",
     "image": "https://pixabay.com/images/download/lmoonlight-legoland-3486932_1920.jpg",
     "imageSource": "https://pixabay.com/photos/legoland-observation-tower-3486932/",
     "product": "Ticket",
     "rating": 3,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   },
   {
     "name": "Churro Cart",
     "description": "Fried dough sticks coated in cinnamon sugar, served warm.",
+    "category": "Food Stall",
     "image": "https://pixabay.com/images/download/daria-yakovleva-churros-2188871_1920.jpg",
     "imageSource": "https://pixabay.com/photos/churros-dessert-confectionery-2188871/",
     "product": "Churro",
     "rating": 5,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01"
+    "maintenanceDate": "2026-01-01T00:00:00Z"
   }
 ]
