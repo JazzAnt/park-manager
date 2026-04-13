@@ -39,8 +39,8 @@ const Facility = ({
         <Price
           product={product}
           price={price}
-          increasePrice={() => increasePrice(_id, price, priceChange, maxPrice)}
-          decreasePrice={() => decreasePrice(_id, price, priceChange, minPrice)}
+          increasePrice={() => increasePrice(_id)}
+          decreasePrice={() => decreasePrice(_id)}
           priceChange={priceChange}
           maxPrice={maxPrice}
           minPrice={minPrice}

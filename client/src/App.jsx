@@ -152,61 +152,63 @@ function App() {
       console.error("Error in deleting facility", err.message);
     }
   };
+  /***
+   * GET FACILITY FOR QUICK EDIT
+   */
+  const getFacility = async (id) => {
+    const URL = `http://localhost:5000/facilities/${id}`;
+    try {
+      const response = await fetch(URL);
+      if (!response.ok)
+        throw new Error(`Error Code ${response.status}`, response.statusText);
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
   /********************************************************************
    * QUICK EDITS
    *******************************************************************/
-  const onRate = (id, rating) => {
-    const updated = facilities.map((facility) =>
-      facility.id === id ? { ...facility, rating } : facility,
-    );
-    setFacilities(updated);
+  const onRate = async (id, rating) => {
+    const facility = await getFacility(id);
+    console.log(facility)
+    const updatedFacility = {...facility, rating};
+    await editFacility(id, updatedFacility, false);
   };
-  const increasePrice = (id, price, increaseBy, maxPrice) => {
-    const updated = facilities.map((facility) =>
-      facility.id === id
-        ? {
-            ...facility,
-            // If new price exceeds maxPrice then set it as maxPrice instead
-            price:
-              price + increaseBy > maxPrice ? maxPrice : price + increaseBy,
-          }
-        : facility,
-    );
-    setFacilities(updated);
+  const increasePrice = async (id) => {
+    const facility = await getFacility(id);
+    // if price exceeds maxprice after increase, set to maxprice instead
+    const price =
+      facility.price + PRICE_CHANGE > MAX_PRICE
+        ? MAX_PRICE
+        : facility.price + PRICE_CHANGE;
+    const updatedFacility = {...facility, price};
+    await editFacility(id, updatedFacility, false);
   };
-  const decreasePrice = (id, price, decreaseBy, minPrice) => {
-    const updated = facilities.map((facility) =>
-      facility.id === id
-        ? {
-            ...facility,
-            // If new price s below minPrice then set it as minPrice instead
-            price:
-              price - decreaseBy < minPrice ? minPrice : price - decreaseBy,
-          }
-        : facility,
-    );
-    setFacilities(updated);
+  const decreasePrice = async (id) => {
+    const facility = await getFacility(id);
+    // if price is below minprice after increase, set to minprice instead
+    const price =
+      facility.price + PRICE_CHANGE < MIN_PRICE
+        ? MIN_PRICE
+        : facility.price + PRICE_CHANGE;
+    const updatedFacility = {...facility, price};
+    await editFacility(id, updatedFacility, false);
   };
-  const onMaintenanceChange = (id) => {
-    const updated = facilities.map((facility) =>
-      facility.id === id
-        ? {
-            ...facility,
-            maintenance: !facility.maintenance, // This is a checkbox so it just flips the existing bool
-            maintenanceDate: new Date().toISOString,
-            // Date is reset so that if checkbox goes from false to true, date is set to
-            // current date as the default date. If it goes from true to false also set
-            // the date since it'll be hidden anyways so it's fine.
-          }
-        : facility,
-    );
-    setFacilities(updated);
+  const onMaintenanceChange = async (id) => {
+    const facility = await getFacility(id);
+    const maintenance = !facility.maintenance; // This is a checkbox so it just flips the existing bool
+    const maintenanceDate = new Date().toISOString(); // Reset date on checkbox tick
+    const updatedFacility = {...facility, maintenance, maintenanceDate};
+    await editFacility(id, updatedFacility, false);
   };
-  const onDateChange = (id, date) => {
-    const updated = facilities.map((facility) =>
-      facility.id === id ? { ...facility, maintenanceDate: date } : facility,
-    );
-    setFacilities(updated);
+  const onDateChange = async (id, date) => {
+    const facility = await getFacility(id);
+    const maintenanceDate = new Date(date).toISOString();
+    const updatedFacility = {...facility, maintenanceDate};
+    await editFacility(id, updatedFacility, false);
   };
 
   return (

@@ -17,7 +17,7 @@ const Maintenance = ({
       <label>Schedule Date</label>
       <input
         type="date"
-        value={date}
+        value={date.split("T")[0]}
         onChange={(event) => onDateChange(event.target.value)}
         disabled={!scheduled}
         aria-disabled={!scheduled}
