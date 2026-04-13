@@ -9,6 +9,10 @@ const facilitySchema = new mongoose.Schema({
     type: String,
     default: "No Description",
   },
+  category: {
+    type: String,
+    required: [true, "Error: No category specified"],
+  },
   image: {
     type: String,
     required: [true, "Error: No image url specified"],

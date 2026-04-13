@@ -41,7 +41,12 @@ const FacilityForm = ({
         </div>
         <div className="form-row">
           <label>Category</label>
-          <select value={category} onChange={setCategory}>
+          <select
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
+            required
+            aria-required
+          >
             <option value="" disabled>
               Choose a Category
             </option>
@@ -67,7 +72,9 @@ const FacilityForm = ({
           />
         </div>
         <div className="form-row">
-          <label>Price ({minPrice}-{maxPrice})</label>
+          <label>
+            Price ({minPrice}-{maxPrice})
+          </label>
           <input
             type="number"
             value={price}
