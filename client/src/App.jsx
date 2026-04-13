@@ -8,8 +8,6 @@ import "./assets/styles/facility.css";
 import "./assets/styles/navbar.css";
 import "./assets/styles/metrics.css";
 
-import data from "./assets/services/data.json";
-
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FacilityList from "./components/FacilityList";
