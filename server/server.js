@@ -1,11 +1,14 @@
 import express from "express";
 import facilityRouter from "./routes/facilityRoutes.js";
-import cors from "cors"
+import cors from "cors";
+import { connectDB, disconnectDB } from "./config/db.js";
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
+
+connectDB();
 
 app.use("/", facilityRouter);
 
