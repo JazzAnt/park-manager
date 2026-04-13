@@ -6,30 +6,24 @@ import EditBtn from "./EditBtn";
 import Demolish from "./Demolish";
 
 const Facility = ({
-  id = -1,
-  name = "",
-  description = "",
-  imgSrc = "react.svg",
-  product = "",
-  rating = 0,
-  price = 0,
+  facility,
+
+  priceChange = 0,
   minPrice = 0,
   maxPrice = Number.MAX_SAFE_INTEGER,
-  maintenance = false,
-  maintenanceDate = "2026-1-1",
-  maxRating = 5,
+  
   onRate = (f) => f,
   increasePrice = (f) => f,
   decreasePrice = (f) => f,
-  priceChange = 0,
   onMaintenanceChange = (f) => f,
   onDateChange = (f) => f,
   onEditBtn = (f) => f,
   onDemolish = (f) => f,
 }) => {
+  let {name, description, category, image, product, rating, price, maintenance, maintenanceDate} = facility
   return (
     <div className="card facility">
-      <Image imgSrc={imgSrc} imgAlt={name} />
+      <Image imgSrc={image} imgAlt={name} />
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
         <p className="card-subtitle">{description}</p>
@@ -37,10 +31,9 @@ const Facility = ({
       <div className="facility-row">
         <Rating
           rating={rating}
-          maxRating={maxRating}
           onRate={(rating) => onRate(id, rating)}
         />
-        <p className="card-text">{rating}/{maxRating} Rating</p>
+        <p className="card-text">{rating}/5 Rating</p>
       </div>
       <div className="facility-row">
         <Price

@@ -1,11 +1,14 @@
 import Facility from "./Facility";
 const FacilityList = ({
   facilities = [],
-  maxRating = 5,
+
+  priceChange = 0,
+  minPrice = 0,
+  maxPrice = Number.MAX_SAFE_INTEGER,
+
   onRate = (f) => f,
   increasePrice = (f) => f,
   decreasePrice = (f) => f,
-  priceChange = 0,
   onMaintenanceChange = (f) => f,
   onDateChange = (f) => f,
   onEditBtn = (f) => f,
@@ -21,13 +24,16 @@ const FacilityList = ({
       <div className="facilityContainer">
         {facilities.map((facility) => (
           <Facility
-            key={facility.id}
-            {...facility}
-            maxRating={maxRating}
+          key={facility._id}
+          facility={facility}
+
+          priceChange={priceChange}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+
             onRate={onRate}
             increasePrice={increasePrice}
             decreasePrice={decreasePrice}
-            priceChange={priceChange}
             onMaintenanceChange={onMaintenanceChange}
             onDateChange={onDateChange}
             onEditBtn={onEditBtn}

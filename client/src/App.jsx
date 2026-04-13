@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
@@ -7,7 +7,7 @@ import "./assets/styles/reset.css";
 import "./assets/styles/facilityForm.css";
 import "./assets/styles/facility.css";
 import "./assets/styles/navbar.css";
-import "./assets/styles/metrics.css"
+import "./assets/styles/metrics.css";
 
 import data from "./assets/services/data.json";
 
@@ -31,10 +31,29 @@ function getCurrentDate() {
 }
 
 function App() {
-  const [facilities, setFacilities] = useState(data);
-  const MAX_RATING = 5;
-  const PRICE_CHANGE = 0.25;
+  const [facilities, setFacilities] = useState([]);
   const navigate = useNavigate();
+  const PRICE_CHANGE = 0.25;
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const URL = "http://localhost:5000/facilities";
+      try {
+        const response = await fetch(URL);
+        if (!response.ok)
+          throw new Error(
+            `Error code ${response.status}:`,
+            response.statusText,
+          );
+        const data = await response.json();
+        setFacilities(data)
+      } catch (err) {
+        console.error(err.message);
+      }
+    };
+    fetchData();
+    return () => {};
+  },[]);
 
   const onRate = (id, rating) => {
     const updated = facilities.map((facility) =>
@@ -157,9 +176,8 @@ function App() {
             element={
               <FacilityList
                 facilities={facilities}
-                maxRating={MAX_RATING}
-                onRate={onRate}
                 priceChange={PRICE_CHANGE}
+                onRate={onRate}
                 increasePrice={increasePrice}
                 decreasePrice={decreasePrice}
                 onMaintenanceChange={onMaintenanceChange}
