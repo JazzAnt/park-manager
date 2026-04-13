@@ -9,7 +9,9 @@
     "rating": 3,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 45200,
+    "profitsThisYear": 180800
   },
   {
     "name": "Sunset Coaster",
@@ -21,7 +23,9 @@
     "rating": 5,
     "price": 10,
     "maintenance": true,
-    "maintenanceDate": "2026-08-09T00:00:00Z"
+    "maintenanceDate": "2026-08-09T00:00:00Z",
+    "customersThisYear": 82000,
+    "profitsThisYear": 820000
   },
   {
     "name": "Log Flume Ride",
@@ -33,7 +37,9 @@
     "rating": 4,
     "price": 8,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 65000,
+    "profitsThisYear": 520000
   },
   {
     "name": "Steel Wild Mouse",
@@ -45,7 +51,9 @@
     "rating": 5,
     "price": 10,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 78000,
+    "profitsThisYear": 780000
   },
   {
     "name": "Hotdog Stand",
@@ -57,7 +65,9 @@
     "rating": 2,
     "price": 5,
     "maintenance": true,
-    "maintenanceDate": "2026-06-01T00:00:00Z"
+    "maintenanceDate": "2026-06-01T00:00:00Z",
+    "customersThisYear": 31000,
+    "profitsThisYear": 155000
   },
   {
     "name": "Ferris Wheel",
@@ -69,7 +79,9 @@
     "rating": 3,
     "price": 5,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 55000,
+    "profitsThisYear": 275000
   },
   {
     "name": "Hedge Maze",
@@ -81,7 +93,9 @@
     "rating": 3,
     "price": 0,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 92000,
+    "profitsThisYear": 0
   },
   {
     "name": "Wooden Coaster",
@@ -93,7 +107,9 @@
     "rating": 5,
     "price": 10,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 89000,
+    "profitsThisYear": 890000
   },
   {
     "name": "Haunted Mansion",
@@ -105,7 +121,9 @@
     "rating": 4,
     "price": 7,
     "maintenance": true,
-    "maintenanceDate": "2026-10-31T00:00:00Z"
+    "maintenanceDate": "2026-10-31T00:00:00Z",
+    "customersThisYear": 42000,
+    "profitsThisYear": 294000
   },
   {
     "name": "Ice Cream Parlor",
@@ -117,7 +135,9 @@
     "rating": 5,
     "price": 5,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 68000,
+    "profitsThisYear": 340000
   },
   {
     "name": "Tea Cups",
@@ -129,7 +149,9 @@
     "rating": 3,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 51000,
+    "profitsThisYear": 204000
   },
   {
     "name": "Inverted Coaster",
@@ -141,7 +163,9 @@
     "rating": 5,
     "price": 12,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 72000,
+    "profitsThisYear": 864000
   },
   {
     "name": "Popcorn Stall",
@@ -153,7 +177,9 @@
     "rating": 4,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 95000,
+    "profitsThisYear": 380000
   },
   {
     "name": "Sky Tram",
@@ -165,7 +191,9 @@
     "rating": 3,
     "price": 5,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 38000,
+    "profitsThisYear": 190000
   },
   {
     "name": "Wave Pool",
@@ -177,7 +205,9 @@
     "rating": 5,
     "price": 15,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 44000,
+    "profitsThisYear": 660000
   },
   {
     "name": "Petting Zoo",
@@ -189,7 +219,9 @@
     "rating": 4,
     "price": 2,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 62000,
+    "profitsThisYear": 124000
   },
   {
     "name": "Giant Slide",
@@ -201,7 +233,9 @@
     "rating": 3,
     "price": 2,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 58000,
+    "profitsThisYear": 116000
   },
   {
     "name": "Paddle Boats",
@@ -213,7 +247,9 @@
     "rating": 3,
     "price": 8,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 22000,
+    "profitsThisYear": 176000
   },
   {
     "name": "Gyro Drop",
@@ -225,7 +261,9 @@
     "rating": 5,
     "price": 13,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 54000,
+    "profitsThisYear": 702000
   },
   {
     "name": "Mini Golf",
@@ -237,7 +275,9 @@
     "rating": 4,
     "price": 7,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 33000,
+    "profitsThisYear": 231000
   },
   {
     "name": "Lemonade Stand",
@@ -249,7 +289,9 @@
     "rating": 5,
     "price": 3,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 88000,
+    "profitsThisYear": 264000
   },
   {
     "name": "Observatory Tower",
@@ -261,7 +303,9 @@
     "rating": 3,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 29000,
+    "profitsThisYear": 116000
   },
   {
     "name": "Churro Cart",
@@ -273,7 +317,9 @@
     "rating": 5,
     "price": 4,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 74000,
+    "profitsThisYear": 296000
   },
   {
     "name": "Tall Coaster",
@@ -285,7 +331,9 @@
     "rating": 5,
     "price": 8,
     "maintenance": false,
-    "maintenanceDate": "2026-01-01T00:00:00Z"
+    "maintenanceDate": "2026-01-01T00:00:00Z",
+    "customersThisYear": 81000,
+    "profitsThisYear": 648000
   },
   {
     "name": "Crazy Coaster",
@@ -297,6 +345,8 @@
     "rating": 5,
     "price": 7,
     "maintenance": true,
-    "maintenanceDate": "2026-09-01T00:00:00Z"
+    "maintenanceDate": "2026-09-01T00:00:00Z",
+    "customersThisYear": 76000,
+    "profitsThisYear": 532000
   }
 ]

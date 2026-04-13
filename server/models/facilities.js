@@ -45,6 +45,14 @@ const facilitySchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  customersThisYear: {
+    type: Number,
+    default: 0,
+  },
+  profitsThisYear: {
+    type: Number,
+    default: 0,
+  },
 });
 
 export const Facility = mongoose.model("Facility", facilitySchema);
