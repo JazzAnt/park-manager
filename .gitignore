@@ -1,4 +1,5 @@
 # React .gitignore Template - Updated 2025
+apikeys.jsx
 
 # Dependencies
 node_modules/

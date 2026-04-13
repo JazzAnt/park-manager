@@ -5,21 +5,21 @@ const FacilityForm = ({
   setName = (f) => f,
   description = "",
   setDescription = (f) => f,
-  fileKey = 0,
-  setImage = (f) => f,
+  category = "",
+  setCategory = (f) => f,
   product = "",
   setProduct = (f) => f,
   price = 0,
   setPrice = (f) => f,
   minPrice = 0,
-  setMinPrice = (f) => f,
-  maxPrice = 0,
-  setMaxPrice = (f) => f,
+  maxPrice = Number.MAX_SAFE_INTEGER,
+  fileKey = 0,
+  setImage = (f) => f,
 }) => {
   return (
     <form className="facilityForm" onSubmit={(event) => onSubmit(event)}>
       <fieldset>
-        <legend>Facility Data</legend>
+        <legend>Facility Form</legend>
         <div className="form-row">
           <label>Name</label>
           <input
@@ -40,17 +40,21 @@ const FacilityForm = ({
           />
         </div>
         <div className="form-row">
-          <label>Image (max 8MB)</label>
-          <input
-            type="file"
-            accept="image/jpeg, image/png, image/svg+xml"
-            onChange={(event) => setImage(event.target.files[0])}
-            key={fileKey}
-          />
+          <label>Category</label>
+          <select value={category} onChange={setCategory}>
+            <option value="" disabled>
+              Choose a Category
+            </option>
+            <option value="Roller Coaster">Roller Coaster</option>
+            <option value="Gentle Ride">Gentle Ride</option>
+            <option value="Thrill Ride">Thrill Ride</option>
+            <option value="Water Ride">Water Ride</option>
+            <option value="Food Stall">Food Stall</option>
+          </select>
         </div>
       </fieldset>
       <fieldset>
-        <legend>Product Data</legend>
+        <legend>Facility Form</legend>
         <div className="form-row">
           <label>Product</label>
           <input
@@ -63,7 +67,7 @@ const FacilityForm = ({
           />
         </div>
         <div className="form-row">
-          <label>Price</label>
+          <label>Price ({minPrice}-{maxPrice})</label>
           <input
             type="number"
             value={price}
@@ -75,27 +79,12 @@ const FacilityForm = ({
           />
         </div>
         <div className="form-row">
-          <label>Minimum Price</label>
+          <label>Image (max 8MB)</label>
           <input
-            type="number"
-            value={minPrice}
-            required
-            aria-required
-            min={0}
-            max={price}
-            onChange={(event) => setMinPrice(event.target.value)}
-          />
-        </div>
-        <div className="form-row">
-          <label>Maximum Price</label>
-          <input
-            type="number"
-            value={maxPrice}
-            required
-            aria-required
-            min={price}
-            max={Number.MAX_SAFE_INTEGER}
-            onChange={(event) => setMaxPrice(event.target.value)}
+            type="file"
+            accept="image/jpeg, image/png, image/svg+xml"
+            key={fileKey}
+            onChange={(event) => setImage(event.target.files[0])}
           />
         </div>
       </fieldset>

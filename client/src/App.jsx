@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { v4 } from "uuid";
 import { Routes, Route, useNavigate } from "react-router-dom";
 
 import "./App.css";
@@ -18,23 +17,44 @@ import AddFacilityForm from "./components/AddFacilityForm";
 import EditFacilityForm from "./components/EditFacilityForm";
 import Metrics from "./components/Metrics";
 
-function getCurrentDate() {
-  const now = new Date();
-  //String().padStart(2,"0") makes sure that these are double digits
-  //even if it's a single digit day/month
-  //getMonth and getDay returns the month and day starting at index 0
-  //(e.g. Jan = 0, Feb = 1, Mar = 2, etc) which is why they need + 1
-  const year = String(now.getFullYear()).padStart(4, "0");
-  const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDay() + 1).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
+import { pixabay_apikey } from "./apikeys.jsx";
+/**
+ * Fetches an image from pixabay API to be used as placeholder image.
+ * Returns an updated facility with an image link.
+ * @param {*} facility
+ */
+const appendImage = async (facility) => {
+  const query = facility.name.replaceAll(" ", "+");
+  const URL = `https://pixabay.com/api/?key=${pixabay_apikey}&q=${query}&image_type=photo`;
+  let image = "https://picsum.photos/640/427";
+  let imageSource = "Lorem Picsum";
+  try {
+    const response = await fetch(URL);
+    if (!response.ok) throw new Error("Pixabay Error:", response.statusText);
+    const data = await response.json();
+    if (!data.hits || data.hits.length === 0)
+      throw new Error("Query yields no results");
+    const imageData = data.hits[0];
+    image = imageData.previewURL.replaceAll("_150", "_1280");
+    imageSource = imageData.pageURL;
+  } catch (err) {
+    console.error(err.message);
+  }
+  const updatedFacility = { ...facility, image, imageSource };
+  return updatedFacility;
+};
+
+const PRICE_CHANGE = 0.25;
+const MIN_PRICE = 0
+const MAX_PRICE = 20
 
 function App() {
   const [facilities, setFacilities] = useState([]);
   const navigate = useNavigate();
-  const PRICE_CHANGE = 0.25;
 
+  /********************************************************************
+   * FETCH DATA FROM DB
+   *******************************************************************/
   useEffect(() => {
     const fetchData = async () => {
       const URL = "http://localhost:5000/facilities";
@@ -46,15 +66,56 @@ function App() {
             response.statusText,
           );
         const data = await response.json();
-        setFacilities(data)
+        setFacilities(data);
       } catch (err) {
         console.error(err.message);
       }
     };
     fetchData();
     return () => {};
-  },[]);
-
+  }, []);
+  /********************************************************************
+   * ADD FACILITY
+   *******************************************************************/
+  const addNewFacility = async (facility) => {
+    //Append image from API
+    facility = await appendImage(facility);
+    console.log("adding facility:", facility)
+    const URL = "http://localhost:5000/facilities";
+    try {
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(facility),
+      });
+      if (!response.ok)
+        throw new Error(`Error code ${response.status}`, response.statusText);
+      const data = await response.json();
+      const updated = [...facilities, data];
+      setFacilities(updated);
+    } catch (err) {
+      console.error("Error in adding facility", err.message);
+    }
+  };
+  /********************************************************************
+   * EDIT FACILITY FORM FACILITY
+   *******************************************************************/
+  const onEditBtn = (id) => {
+    navigate(`/edit/${id}`);
+  };
+  const editFacility = async (id, facility) => {};
+  /********************************************************************
+   * DELETE FACILITY
+   *******************************************************************/
+  const onDemolish = (id) => {
+    const updated = facilities.filter((facility) => facility.id !== id);
+    setFacilities(updated);
+  };
+  /********************************************************************
+   * QUICK EDITS
+   *******************************************************************/
   const onRate = (id, rating) => {
     const updated = facilities.map((facility) =>
       facility.id === id ? { ...facility, rating } : facility,
@@ -93,7 +154,7 @@ function App() {
         ? {
             ...facility,
             maintenance: !facility.maintenance, // This is a checkbox so it just flips the existing bool
-            maintenanceDate: getCurrentDate(),
+            maintenanceDate: new Date().toISOString,
             // Date is reset so that if checkbox goes from false to true, date is set to
             // current date as the default date. If it goes from true to false also set
             // the date since it'll be hidden anyways so it's fine.
@@ -105,60 +166,6 @@ function App() {
   const onDateChange = (id, date) => {
     const updated = facilities.map((facility) =>
       facility.id === id ? { ...facility, maintenanceDate: date } : facility,
-    );
-    setFacilities(updated);
-  };
-  const onEditBtn = (id) => {
-    navigate(`/edit/${id}`);
-  };
-  const onDemolish = (id) => {
-    const updated = facilities.filter((facility) => facility.id !== id);
-    setFacilities(updated);
-  };
-  const addNewFacility = (
-    name,
-    description,
-    imgSrc,
-    imgCredit,
-    product,
-    price,
-    minPrice,
-    maxPrice,
-  ) => {
-    const updated = [
-      ...facilities,
-      {
-        id: v4(),
-        name,
-        description,
-        imgSrc, //placeholder, replace with custom image adding if possible
-        imgCredit,
-        product,
-        rating: 0,
-        price,
-        minPrice,
-        maxPrice,
-        maintenance: false,
-        maintenanceDate: "1998-10-07",
-      },
-    ];
-    setFacilities(updated);
-  };
-  const editFacility = (
-    id,
-    name,
-    description,
-    // imgSrc,
-    // imgCredit,
-    product,
-    price,
-    minPrice,
-    maxPrice,
-  ) => {
-    const updated = facilities.map((facility) =>
-      facility.id === id
-        ? { ...facility, name, description, product, price, minPrice, maxPrice }
-        : facility,
     );
     setFacilities(updated);
   };
@@ -177,6 +184,8 @@ function App() {
               <FacilityList
                 facilities={facilities}
                 priceChange={PRICE_CHANGE}
+                minPrice={MIN_PRICE}
+                maxPrice={MAX_PRICE}
                 onRate={onRate}
                 increasePrice={increasePrice}
                 decreasePrice={decreasePrice}
@@ -189,7 +198,7 @@ function App() {
           />
           <Route
             path="/add"
-            element={<AddFacilityForm addNewFacility={addNewFacility} />}
+            element={<AddFacilityForm addNewFacility={addNewFacility} minPrice={MIN_PRICE} maxPrice={MAX_PRICE}/>}
           />
           <Route
             path="/edit/:id"
