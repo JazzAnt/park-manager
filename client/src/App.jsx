@@ -127,7 +127,6 @@ function App() {
 
       //Update local facilities
       const data = await response.json();
-      console.log(facilities);
       const updated = facilities.map((facility) =>
         facility._id === id ? data : facility,
       );
@@ -139,9 +138,19 @@ function App() {
   /********************************************************************
    * DELETE FACILITY
    *******************************************************************/
-  const onDemolish = (id) => {
-    const updated = facilities.filter((facility) => facility.id !== id);
-    setFacilities(updated);
+  const onDemolish = async (id) => {
+    const URL = `http://localhost:5000/facilities/${id}`;
+    try {
+      const response = await fetch(URL, { method: "DELETE" });
+      if (!response.ok)
+        throw new Error(`Error code ${response.status}`, response.statusText);
+
+      //Update local facilities
+      const updated = facilities.filter((facility) => facility._id !== id);
+      setFacilities(updated);
+    } catch (err) {
+      console.error("Error in deleting facility", err.message);
+    }
   };
   /********************************************************************
    * QUICK EDITS
