@@ -1,96 +1,99 @@
 import express from "express";
-import data from "./data.json" with { type: "json" };
+import { Facility } from "../models/facilities.js";
 
-const facilityRouter = express.Router();
+const router = express.Router();
 
-let facilities = data;
-/**
- * GET
- */
-facilityRouter.get("/facility", (req, res) => {
-  res.status(200).send(facilities);
-});
-facilityRouter.get("/facility/:id", (req, res) => {
-  let { id } = req.params;
-  let facility = facilities.filter((facility) => facility.id === id);
-  if (facility.length === 0) {
-    res.status(404).send({ error: "Facility with that id not found" });
+// GET ALL FACILITIES
+router.get("/facilities", async (req, res) => {
+  try {
+    const facilities = await Facility.find();
+    if (facilities.length === 0) {
+      return res
+        .status(404)
+        .json({ error: "No facilities found in the database." });
+    }
+    res.status(200).json(facilities);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-  res.status(200).send(facility[0]);
 });
-/**
- * POST
- * Normally users set most of the parameters, but for now we make
- * users set only the name, description and product to simplify testing
- */
-facilityRouter.post("/facility", (req, res) => {
-  let { name, description = "", product, rating = 1, price = 5 } = req.body;
 
-  if (!name || !product) {
-    res.status(400).send({ error: "name and product are required values" });
-  }
-
-  let newFacility = {
-    id: new Date().getTime() + "", //Id should be v4() but I don't wanna install uuid just for testing
-    name,
-    description,
-    imgSrc: "vite.svg",
-    imgCredit: "",
-    product,
-    rating: 0,
-    price: 5,
-    minPrice: 1,
-    maxPrice: 20,
-    maintenance: false,
-    maintenanceDate: "1998-10-07",
-  };
-
-  facilities = [...facilities, newFacility];
-  res.status(201).send(newFacility);
-});
-/**
- * PUT
- * Can be changed: name, description, product, rating, price
- */
-facilityRouter.put("/facility/:id", (req, res) => {
+// GET ONE FACILITY
+router.get("/facilities/:id", async (req, res) => {
   let { id } = req.params;
-
-  let facility = facilities.filter((facility) => facility.id === id);
-  if (facility.length === 0) {
-    res.status(404).send({ error: "Facility with that id not found" });
+  try {
+    const facility = await Facility.findById(id);
+    if (!facility) {
+      return res
+        .status(404)
+        .json({ error: "No facility with that id found in the database." });
+    }
+    res.status(200).json(facility);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-
-  let {
-    name: oldName,
-    description: oldDescription,
-    product: oldProduct,
-    rating: oldRating,
-    price: oldPrice,
-  } = facilities[0];
-
-  //if no value is give, use old value as default value
-  let {
-    name = oldName,
-    description = oldDescription,
-    product = oldProduct,
-    rating = oldRating,
-    price = oldPrice,
-  } = req.body;
-  facilities = facilities.map((facility) =>
-    facility.id === id
-      ? { ...facility, name, description, product, rating, price }
-      : facility,
-  );
-  res.status(201).send("Updated Successfully");
 });
 
-/**
- * DELETE
- */
-facilityRouter.delete("/facility/:id", (req, res) => {
+// GET ALL FACILITY OF A SPECIFIED CATEGORY
+router.get("/facilities/category/:category", async (req, res) => {
+  let { category } = req.params;
+  try {
+    const facilities = await Facility.find({category: category});
+    if (facilities.length === 0) {
+      return res
+        .status(404)
+        .json({ error: "No facilities of that category found in the database." });
+    }
+    res.status(200).json(facilities);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// POST FACILITY
+router.post("/facilities", async (req, res) => {
+  try {
+    const facility = new Facility(req.body);
+    const saved = await facility.save();
+    res.status(201).json(saved);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// PUT FACILITY
+router.put("/facilities/:id", async (req, res) => {
   let { id } = req.params;
-  facilities = facilities.filter((facility) => facility.id !== id);
-  res.status(201).send("Deleted Successfully");
+  try {
+    const updated = await Facility.findByIdAndUpdate(id, req.body, {
+      new: true,
+      runValidators: true,
+    });
+    if (!updated) {
+      return res
+        .status(404)
+        .json({ error: "No facility with that id found in the database." });
+    }
+    res.status(201).json(updated);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-export default facilityRouter;
+// DELETE FACILITY
+router.delete("/facilities/:id", async (req, res) => {
+  let { id } = req.params;
+  try {
+    const deleted = await Facility.findByIdAndDelete(id);
+    if (!deleted) {
+      return res
+        .status(404)
+        .json({ error: "No facility with that id found in the database." });
+    }
+    res.status(201).json(deleted);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+export default router;
