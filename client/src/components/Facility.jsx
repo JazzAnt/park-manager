@@ -20,7 +20,7 @@ const Facility = ({
   onEditBtn = (f) => f,
   onDemolish = (f) => f,
 }) => {
-  let {name, description, category, image, product, rating, price, maintenance, maintenanceDate} = facility
+  let { _id, name, description, category, image, product, rating, price, maintenance, maintenanceDate} = facility
   return (
     <div className="card facility">
       <Image imgSrc={image} imgAlt={name} />
@@ -31,7 +31,7 @@ const Facility = ({
       <div className="facility-row">
         <Rating
           rating={rating}
-          onRate={(rating) => onRate(id, rating)}
+          onRate={(rating) => onRate(_id, rating)}
         />
         <p className="card-text">{rating}/5 Rating</p>
       </div>
@@ -39,8 +39,8 @@ const Facility = ({
         <Price
           product={product}
           price={price}
-          increasePrice={() => increasePrice(id, price, priceChange, maxPrice)}
-          decreasePrice={() => decreasePrice(id, price, priceChange, minPrice)}
+          increasePrice={() => increasePrice(_id, price, priceChange, maxPrice)}
+          decreasePrice={() => decreasePrice(_id, price, priceChange, minPrice)}
           priceChange={priceChange}
           maxPrice={maxPrice}
           minPrice={minPrice}
@@ -50,13 +50,13 @@ const Facility = ({
         <Maintenance
           scheduled={maintenance}
           date={maintenanceDate}
-          onScheduledChange={() => onMaintenanceChange(id)}
-          onDateChange={(date) => onDateChange(id, date)}
+          onScheduledChange={() => onMaintenanceChange(_id)}
+          onDateChange={(date) => onDateChange(_id, date)}
         />
       </div>
       <div className="card-footer">
-        <EditBtn onEditBtn={() => onEditBtn(id)} />
-        <Demolish onDemolish={() => onDemolish(id)} />
+        <EditBtn onEditBtn={() => onEditBtn(_id)} />
+        <Demolish onDemolish={() => onDemolish(_id)} />
       </div>
     </div>
   );

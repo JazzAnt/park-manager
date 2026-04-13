@@ -45,8 +45,8 @@ const appendImage = async (facility) => {
 };
 
 const PRICE_CHANGE = 0.25;
-const MIN_PRICE = 0
-const MAX_PRICE = 20
+const MIN_PRICE = 0;
+const MAX_PRICE = 20;
 
 function App() {
   const [facilities, setFacilities] = useState([]);
@@ -80,7 +80,7 @@ function App() {
   const addNewFacility = async (facility) => {
     //Append image from API
     facility = await appendImage(facility);
-    console.log("adding facility:", facility)
+
     const URL = "http://localhost:5000/facilities";
     try {
       const response = await fetch(URL, {
@@ -92,6 +92,8 @@ function App() {
       });
       if (!response.ok)
         throw new Error(`Error code ${response.status}`, response.statusText);
+
+      //Update local facilities
       const data = await response.json();
       const updated = [...facilities, data];
       setFacilities(updated);
@@ -105,7 +107,35 @@ function App() {
   const onEditBtn = (id) => {
     navigate(`/edit/${id}`);
   };
-  const editFacility = async (id, facility) => {};
+  const editFacility = async (id, facility, imageChanged) => {
+    // Only update image if detect image change
+    if (imageChanged) {
+      facility = await appendImage(facility);
+    }
+
+    const URL = `http://localhost:5000/facilities/${id}`;
+    try {
+      const response = await fetch(URL, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(facility),
+      });
+      if (!response.ok)
+        throw new Error(`Error code ${response.status}`, response.statusText);
+
+      //Update local facilities
+      const data = await response.json();
+      console.log(facilities);
+      const updated = facilities.map((facility) =>
+        facility._id === id ? data : facility,
+      );
+      setFacilities(updated);
+    } catch (err) {
+      console.error("Error in updating facility", err.message);
+    }
+  };
   /********************************************************************
    * DELETE FACILITY
    *******************************************************************/
@@ -198,14 +228,21 @@ function App() {
           />
           <Route
             path="/add"
-            element={<AddFacilityForm addNewFacility={addNewFacility} minPrice={MIN_PRICE} maxPrice={MAX_PRICE}/>}
+            element={
+              <AddFacilityForm
+                addNewFacility={addNewFacility}
+                minPrice={MIN_PRICE}
+                maxPrice={MAX_PRICE}
+              />
+            }
           />
           <Route
             path="/edit/:id"
             element={
               <EditFacilityForm
-                facilities={facilities}
                 editFacility={editFacility}
+                minPrice={MIN_PRICE}
+                maxPrice={MAX_PRICE}
               />
             }
           />

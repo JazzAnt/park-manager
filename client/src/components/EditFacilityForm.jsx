@@ -1,38 +1,70 @@
-import { useState } from "react";
-import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import FacilityForm from "./FacilityForm";
 
-const EditFacilityForm = ({ facilities = [], editFacility = (f) => f }) => {
+const EditFacilityForm = ({
+  editFacility = (f) => f,
+  minPrice = 0,
+  maxPrice = Number.MAX_SAFE_INTEGER,
+}) => {
   let { id } = useParams();
-  const toBeEdited = facilities.filter((facility) => facility.id === id);
-  let {
-    name: oldName,
-    description: oldDescription,
-    image: oldImage,
-    product: oldProduct,
-    price: oldPrice,
-    minPrice: oldMinPrice,
-    maxPrice: oldMaxPrice,
-  } = toBeEdited[0];
-
   const navigate = useNavigate();
-  const [name, setName] = useState(oldName);
-  const [description, setDescription] = useState(oldDescription);
-  const [image, setImage] = useState(undefined);
-  const [product, setProduct] = useState(oldProduct);
-  const [price, setPrice] = useState(oldPrice);
-  const [minPrice, setMinPrice] = useState(oldMinPrice);
-  const [maxPrice, setMaxPrice] = useState(oldMaxPrice);
-  const [fileKey, setFileKey] = useState(0);
 
-  const saveUploadedImage = () => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const URL = `http://localhost:5000/facilities/${id}`;
+      try {
+        const response = await fetch(URL);
+        if (!response.ok)
+          throw new Error(`Error Code ${response.status}`, response.statusText);
+
+        const data = await response.json();
+        setFacility({
+          name: data.name,
+          description: data.description,
+          category: data.category,
+          image: data.image,
+          imageSource: data.imageSource,
+          product: data.product,
+          rating: data.rating,
+          price: data.price,
+          maintenance: data.maintenance,
+          maintenanceDate: data.maintenanceDate,
+        });
+      } catch (error) {
+        console.error(error.message);
+        navigate("/"); //if fetching data fails, exit
+      }
+    };
+    fetchData();
+
+    return () => {};
+  }, []);
+
+  const [facility, setFacility] = useState({
+    name: "",
+    description: "",
+    category: "",
+    image: "",
+    imageSource: "",
+    product: "",
+    rating: 1,
+    price: 1,
+    maintenance: false,
+    maintenanceDate: "2026-01-01T00:00:00Z",
+  });
+
+  const [fileKey, setFileKey] = useState(0);
+  const [imageData, setImageData] = useState(undefined);
+
+  const validateImage = () => {
     // Image is optional so if user doesn't upload anything then it's fine
-    if (!image) return true;
+    if (!imageData) return true;
     // Form already has these type restriction but users can override it so add another check here
     if (
-      image.type !== "image/jpeg" &&
-      image.type !== "image/png" &&
-      image.type !== "image/svg+xml"
+      imageData.type !== "image/jpeg" &&
+      imageData.type !== "image/png" &&
+      imageData.type !== "image/svg+xml"
     ) {
       alert(
         "ERROR: Selected file type is not supported. File must be a jpg/jpeg, png or svg file.",
@@ -40,44 +72,35 @@ const EditFacilityForm = ({ facilities = [], editFacility = (f) => f }) => {
       return false;
     }
     // Max size 8MB
-    if (image.size > 8000000) {
+    if (imageData.size > 8000000) {
       alert("ERROR: Image cannot exceed 8MB.");
       return false;
     }
-    // This alert will be replaced with an actual way to save the image to the server
-    alert(
-      `Image upload is not implemented yet, but if you see this message then your file met all the validation criteria and would've been uploaded. For now the Vite logo is used as a placeholder image for all newly added facilities.`,
-    );
     return true;
   };
 
   const reset = () => {
-    setName("");
-    setDescription("");
-    setImage(undefined);
+    setFacility({
+      name: "",
+      description: "",
+      category: "",
+      image: "",
+      imageSource: "",
+      product: "",
+      rating: 1,
+      price: 1,
+      maintenance: false,
+      maintenanceDate: "2026-01-01T00:00:00Z",
+    });
     // Changing the file input key is done so that React is forced to reload the element
     // which is used to remove the visual indication that a file has been uploaded.
     setFileKey(fileKey ? 0 : 1);
-    setProduct("");
-    setPrice(5);
-    setMinPrice(1);
-    setMaxPrice(20);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
-    if (!saveUploadedImage()) return;
-    editFacility(
-      id,
-      name,
-      description,
-      // "vite.svg",
-      // "Placeholder Image",
-      product,
-      price,
-      minPrice,
-      maxPrice,
-    );
+    if (!validateImage()) return;
+    editFacility(id, facility, (imageData!==undefined));
     reset();
     navigate("/");
   };
@@ -86,20 +109,22 @@ const EditFacilityForm = ({ facilities = [], editFacility = (f) => f }) => {
     <FacilityForm
       submitBtnText="Edit Facility"
       onSubmit={onSubmit}
-      name={name}
-      setName={setName}
-      description={description}
-      setDescription={setDescription}
-      fileKey={fileKey}
-      setImage={setImage}
-      product={product}
-      setProduct={setProduct}
-      price={price}
-      setPrice={setPrice}
+      name={facility.name}
+      setName={(value) => setFacility({ ...facility, name: value })}
+      description={facility.description}
+      setDescription={(value) =>
+        setFacility({ ...facility, description: value })
+      }
+      category={facility.category}
+      setCategory={(value) => setFacility({ ...facility, category: value })}
+      product={facility.product}
+      setProduct={(value) => setFacility({ ...facility, product: value })}
+      price={facility.price}
+      setPrice={(value) => setFacility({ ...facility, price: value })}
       minPrice={minPrice}
-      setMinPrice={setMinPrice}
       maxPrice={maxPrice}
-      setMaxPrice={setMaxPrice}
+      fileKey={fileKey}
+      setImage={setImageData}
     />
   );
 };
